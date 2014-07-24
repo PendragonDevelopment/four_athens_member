@@ -6,8 +6,13 @@ gem 'rails', '4.1.4'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 
-gem 'bootstrap-sass'
-gem 'sprockets'
+
+
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
+
+
+gem 'bootstrap-sass', '~> 3.2.0' 
+gem 'sprockets', '2.11.0'
 gem 'autoprefixer-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

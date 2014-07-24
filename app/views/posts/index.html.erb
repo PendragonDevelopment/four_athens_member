@@ -27,7 +27,7 @@
         <div class = "initial-post">
           <h3 class="title writer"><%= post.user.first_name + " " + post.user.last_name %> <span class ="deleted">
         <% if post.user_id.to_i == 8 %>
-        <%= link_to "x", post, method: :delete, data: { confirm: "Delete?" } %>
+        <%= link_to "x", post, method: :delete, data: { confirm: "Click 'confirm' to delete." } %>
           <% end %>
    
           </span></h3>
@@ -73,6 +73,5 @@
           <% end %>
 	    </div>
     <% end %>
-
 
 
