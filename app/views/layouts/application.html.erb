@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Four Athens Forum</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <a class="navbar-brand" href="#">Four Athens: Members Only</a>
+   <ul class="nav navbar-nav">
+    <li class="active"><%= link_to "Forum", {:action => :index} %></li>
+    <li><%= link_to("Directory", "#" )%></li>
+    <li><%= link_to("Scheduling", "#", )%></li>
+    <li><%= link_to("FAQs", "#" )%></li>
+  </ul>
+  <p class="navbar-text align-right">Signed in as Joey Tribiani</p>
+     
+     
+   </nav>
+   <% if !flash[:notice].blank? %>
+        <div  class="alert alert-success" role="alert">
+          <%= flash[:notice] %></br>
+        </div>
+      <% end %>
+
+    <div class="container1">
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

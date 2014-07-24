@@ -1,0 +1,157 @@
+
+@import "bootstrap";
+
+$main-color: #7CC0CB;
+$secondary-color: #707070;
+$tertiary-color: #ccc;
+
+@font-face {
+    font-family: 'inconsolatamedium';
+    src: url('/assets/inconsolata-webfont.eot');
+    src: url('/assets/inconsolata-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/inconsolata-webfont.woff') format('woff'),
+         url('/assets/inconsolata-webfont.ttf') format('truetype'),
+         url('/assets/inconsolata-webfont.svg#inconsolatamedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+  font-family: inconsolatamedium;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  font-family: inconsolatamedium;
+
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #707070;
+
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
+}
+
+p {
+    letter-spacing: -1px;
+
+  font-size: 1.1em;
+  line-height: 1em;
+  font-family: inconsolatamedium;
+
+}
+a {
+  color: inherit;
+  &:hover{
+    color: $secondary-color;
+    text-decoration: none;
+  }
+}
+
+.comment {
+margin-left: 40px;
+
+}
+
+
+.title {
+  font-size: 1.4em;
+  color: $main-color;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.writer{
+}
+.content {
+  color: $secondary-color;
+  line-height: 1.2em;
+
+}
+
+.reply {
+  color: $main-color;
+  float: right;
+  text-align: right; 
+  cursor: pointer;
+ 
+}
+
+.posted {
+  color: $tertiary-color;
+  line-height: 0.9em;
+}
+
+
+.button{
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background: transparent;
+  border: 0 none;
+  white-space: nowrap;
+  text-transform: none;
+  
+  }
+
+  .align-right{
+    text-align: right;
+    float: right;
+      }
+
+.container1{
+  width: 600px;
+  margin: auto;
+  padding-top: 30px;
+}
+
+
+.initial-post{
+  background-color: #f5f5f5;
+  padding: 5px 25px 25px 25px;
+  margin-top: 20px;
+}
+
+.deleted {
+  text-align: right;
+  float: right;
+}

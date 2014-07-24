@@ -1,0 +1,21 @@
+
+<% @posts.each do |post| %>
+    <div class="post">
+    <h3 class="title"><%= post.user.first_name + " " + post.user.last_name %></h3>
+    <p class="content"><%= post.post_content %></p>
+
+
+   
+    <p class="posted">posted <%= distance_of_time_in_words_to_now(post.created_at) + " ago." %>        <a class="reply" href=#>&lt;reply&gt;</a></p>
+
+    <% @comments.each do |comment| %>
+        <div class="comment">
+        <% if comment.post_id == post.id %>
+    	<h3 class="title"><%= comment.user.first_name  + " " + comment.user.last_name %></h3>
+    	<p class="content"><%= comment.comment_content %></p>
+    	<p class="posted">posted <%= distance_of_time_in_words_to_now(comment.created_at) + " ago." %></p>
+      <% end %>
+      </div>
+      <% end %>
+	  </div>
+    <% end %>

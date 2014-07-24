@@ -1,0 +1,78 @@
+   <h1>Four Athens Forum</h1>
+   <h3 id="newpost" class="title"> &lt;new_post&gt;</h3>
+      <div class="input-group" style="display:none" id="hidden-textarea">
+        <span class="input-group-btn">
+          <%= form_for(:post, :url => {:action => 'create'}) do |f| %>
+          <%= f.hidden_field(:user_id, :value => "8")%>
+          <%= f.submit(class: 'btn btn-default') %>
+          <%= f.text_area(:post_content, rows:5, class: "form-control") %>  
+          </span>
+        <% end %>
+    <script>
+      $( "#newpost" ).click(function() {
+      $( "#hidden-textarea" ).fadeToggle("fast", "linear");
+         });
+    </script>
+     </div>     
+
+
+
+
+
+    <% @posts.each do |post| %>
+      
+
+
+      <div class="post">
+        <div class = "initial-post">
+          <h3 class="title writer"><%= post.user.first_name + " " + post.user.last_name %> <span class ="deleted">
+        <% if post.user_id.to_i == 8 %>
+        <%= link_to "x", post, method: :delete, data: { confirm: "Delete?" } %>
+          <% end %>
+   
+          </span></h3>
+          
+        
+
+          <p class="content"><%= post.post_content %></p>
+          <p class="posted">posted <%= distance_of_time_in_words_to_now(post.created_at) + " ago." %>     <a class="button<%= post.id %> reply"  >&lt;reply&gt;</a></p>
+   
+    <script>
+          $( ".button<%= post.id %>" ).click(function() {
+           $( ".text<%= post.id %>" ).fadeToggle("fast", "linear");
+            });
+   </script>
+   
+
+          <div class="input-group text<%= post.id %>" style="display:none" id="hidden-textarea">
+      
+      <span class="input-group-btn">
+           <%= form_for(:comment, :url => {:controller => :comments, :action => 'create'}) do |f| %>
+          <%= f.hidden_field(:user_id, :value => "8")%>
+          <%= f.hidden_field(:post_id, :value => post.id)%>
+
+          <%= f.submit(class: 'btn btn-default') %>
+          <%= f.text_area(:comment_content, rows:5, class: "form-control") %>  
+          </span>
+        <% end %>     
+        </div> 
+        </div>
+          <% @comments.each do |comment| %>
+            <div class="comment">
+              <% if comment.post_id == post.id %>
+        	       <h3 class="writer title"><%= comment.user.first_name  + " " + comment.user.last_name %><span class ="deleted">
+                 <% if comment.user_id.to_i == 8 %>
+        <%= link_to "x", comment, method: :delete, data: { confirm: "Delete?" } %>
+          <% end %>
+
+                 </h3>
+        	       <p class="content"><%= comment.comment_content %></p>
+        	       <p class="posted">posted <%= distance_of_time_in_words_to_now(comment.created_at) + " ago." %></p>
+              <% end %>
+            </div>
+          <% end %>
+	    </div>
+    <% end %>
+
+
+
