@@ -15,8 +15,15 @@
     <li><%= link_to("Scheduling", "#", )%></li>
     <li><%= link_to("FAQs", "#" )%></li>
   </ul>
-  <p class="navbar-text align-right">Signed in as Joey Tribiani</p>
-     
+  <div class="align-right dropdown" >
+  <p data-toggle="dropdown" class="navbar-text"  ><span id="dropdownMenu1" class="caret dropdown-toggle"></span> Signed in as Joey Tribiani </p>
+   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">User Settings</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">User Profile</a></li>
+    <li role="presentation" class="divider"></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
+  </ul>
+  </div>
      
    </nav>
    <% if !flash[:notice].blank? %>
