@@ -91,6 +91,7 @@ a {
 .comment {
 margin-left: 40px;
 
+
 }
 
 
@@ -98,13 +99,14 @@ margin-left: 40px;
   font-size: 1.4em;
   color: $main-color;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .writer{
 }
 .content {
   color: $secondary-color;
   line-height: 1.2em;
+    margin-bottom: 10px;
 
 }
 
@@ -119,8 +121,18 @@ margin-left: 40px;
 .posted {
   color: $tertiary-color;
   line-height: 0.9em;
+  margin-bottom: 25px;
+  margin-top: 11px;
+
 }
 
+.posted-comment {
+  color: $tertiary-color;
+  line-height: 0.9em;
+  margin-bottom: 30px;
+  margin-top: 11px;
+
+}
 
 .button{
   display: inline-block;
@@ -149,7 +161,7 @@ margin-left: 40px;
 
 .initial-post{
   background-color: #f5f5f5;
-  padding: 5px 25px 25px 25px;
+  padding: 5px 25px 5px 25px;
   margin-top: 20px;
 }
 

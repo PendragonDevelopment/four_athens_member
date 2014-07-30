@@ -154,7 +154,7 @@ DEPENDENCIES
   autoprefixer-rails
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
-  capistrano
+  capistrano (~> 3.2.0)
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv!
