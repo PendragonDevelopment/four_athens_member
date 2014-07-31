@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'schedules/index'
+
+  get 'schedules/test'
+
   get 'comment/new'
   get 'comment/delete'
   get 'post/index'

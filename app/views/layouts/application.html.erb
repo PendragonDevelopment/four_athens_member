@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Four Athens Forum</title>
+  <%= favicon_link_tag (source='favicon.ico') %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,12 +11,18 @@
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Four Athens: Members Only</a>
+        <a class="navbar-brand" href="/">Four Athens: Members Only</a>
         <ul class="nav navbar-nav">
-          <li class="active"><%= link_to "Whiteboard", {:action => :index} %></li>
-            <li><%= link_to("Directory", "#" )%></li>
-            <li><%= link_to("Scheduling", "#", )%></li>
-            <li><%= link_to("FAQs", "#" )%></li>
+          <li class="<%='active' if params[:controller] == 'posts'%>">
+            <%= link_to "Whiteboard", {:controller => :posts, :action => :index} %>
+          </li>
+          <li><%= link_to("Directory", "#" )%></li>
+          
+          <li class="<%='active' if params[:controller] == 'schedules'%>">
+            <%= link_to "Scheduling", controller: "schedules" %>
+          </li>
+          
+          <li><%= link_to("FAQs", "#")%></li>
         </ul>
       </div>
           <ul class="nav navbar-nav navbar-right">
