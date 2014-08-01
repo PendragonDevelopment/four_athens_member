@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'profiles/index'
+
+  get 'profiles/edit'
+
   get 'schedules/index'
 
   get 'schedules/test'
