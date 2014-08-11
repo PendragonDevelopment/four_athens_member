@@ -88,6 +88,14 @@ a {
   }
 }
 
+
+
+@media (max-width: 768px) {
+  .navlink {
+    text-align: center;
+  } 
+}
+
 .comment {
 margin-left: 40px;
 
@@ -153,7 +161,7 @@ margin-left: 40px;
       }
 
 .container1{
-  width: 600px;
+  width: 80%;
   margin: auto;
   padding-top: 30px;
 }
