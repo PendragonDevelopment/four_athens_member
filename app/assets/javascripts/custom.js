@@ -1,5 +1,10 @@
 
+
+
 $(document).ready(function() {
+	$("#hidden-textarea").hide();
+	$(".reply-form").hide();
+
 
 	$("#newpost").on("click", function() {
  		$("#hidden-textarea").fadeToggle("fast", "linear");

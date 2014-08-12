@@ -1,6 +1,6 @@
    <h1>Whiteboard</h1>
-   <h3 id="newpost" class="title"> &lt;new_post&gt;</h3>
-      <div class="input-append" style="display:none" id="hidden-textarea">
+   <h3 id="newpost" class="new-post"> &lt;new_post&gt;</h3>
+      <div class="input-append" id="hidden-textarea">
         <div class="input-group-btn">
           <%= form_for(:post, :url => {:action => 'create'}) do |f| %>
           <%= f.hidden_field(:user_id, :value => "8")%>
@@ -35,7 +35,7 @@
             <a class="show-reply reply">&lt;reply&gt;</a>
           </p>
 
-          <div class="input-append reply-form" style="display:none" id="hidden-textarea">
+          <div class="input-append reply-form"  >
       
             <span class="input-group-btn">
             <%= form_for(:comment, :url => {:controller => :comments, :action => 'create'}) do |f| %>
@@ -48,6 +48,8 @@
             <% end %>     
           </div> 
         </div>
+        <div class="comments">
+
           <% @comments.each do |comment| %>
             <div class="comment">
               <% if comment.post_id == post.id %>
@@ -62,6 +64,7 @@
               <% end %>
             </div>
           <% end %>
+        </div>
 	    </div>
     <% end %>
 <br>

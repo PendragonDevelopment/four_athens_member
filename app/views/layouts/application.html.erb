@@ -19,7 +19,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Four Athens</a>
+        <%= image_tag("/assets/fourathens.png", class: "navbar-brand brand-refine") %>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -62,11 +62,7 @@
 
 
 
-   <% if !flash[:notice].blank? %>
-        <div  class="alert alert-success" role="alert">
-          <%= flash[:notice] %></br>
-        </div>
-      <% end %>
+ 
 
     <div class="container1">
       <%= yield %>
