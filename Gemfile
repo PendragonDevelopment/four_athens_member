@@ -6,6 +6,7 @@ gem 'rails', '4.1.4'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 
+gem 'devise', '~> 3.3.0'
 
 
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'

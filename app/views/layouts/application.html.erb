@@ -27,11 +27,11 @@
 
         <ul class="nav navbar-nav">
           <li class=" <%='active' if params[:controller] == 'posts'%>">
-            <%= link_to "Whiteboard", {:controller => :posts, :action => :index}, class: "navlink" %>
+            <%= link_to "Whiteboard", root_path, class: "navlink" %>
           </li>
           <li class="navlink"><%= link_to("Directory", "#")%></li>          
           <li class="navlink <%='active' if params[:controller] == 'schedules'%>">
-            <%= link_to "Scheduling", controller: "schedules" %>
+            <%= link_to "Scheduling", schedules_index_path %>
           </li>          
           <li class="navlink"><%= link_to("FAQs", "#")%></li>
         </ul>
@@ -40,7 +40,7 @@
 
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="navlink dropdown-toggle" data-toggle="dropdown">Signed in as Joey Tribiani <span class="caret"></span></a>
+            <a href="#" class="navlink dropdown-toggle" data-toggle="dropdown">Signed in as <%= current_user.first_name%> <span class="caret"></span></a>
 
 
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -62,7 +62,11 @@
 
 
 
- 
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
+  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
 
     <div class="container1">
       <%= yield %>

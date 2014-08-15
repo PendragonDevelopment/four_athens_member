@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   	@posts = Post.order("posts.created_at DESC")
   	@comments = Comment.order("comments.created_at ASC")
   
+  
   end
 
 def new

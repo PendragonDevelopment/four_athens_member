@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
   get 'profiles/index'
 
   get 'profiles/edit'
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :comments
+
 
   root "posts#index"
 

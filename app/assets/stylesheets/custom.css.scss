@@ -3,9 +3,14 @@
 @import "bootstrap-sprockets";
 
 
-$main-color: #7CC0CB;
+$main-color: #00a1dd;
+//$main-color: #7CC0CB;
 $secondary-color: #707070;
 $tertiary-color: #ccc;
+$four-athens-navy: #002143;
+$four-athens-blue: #00a1dd;
+$four-athens-sky: #9dccf0;
+
 
 @font-face {
     font-family: 'inconsolatamedium';
@@ -175,15 +180,20 @@ margin-left: 20px;
 
 .container1{
   width: 70%;
+  max-width: 700px;
   margin: auto;
   padding-top: 30px;
 }
 
 .new-post {
-  color: #f7b06b;
+  color: $four-athens-sky;
   cursor: pointer;
 
+
 }
+.new-post:hover {
+    color: $secondary-color;
+  }
 
 .initial-post{
   border-top: 1px solid #d8d8d8;
@@ -195,8 +205,14 @@ margin-left: 20px;
 .deleted {
   text-align: right;
   float: right;
-    color: #f7b06b;
+  color: $four-athens-sky;
 
+}
+.comment-deleted{
+  text-align: right;
+  float: right;
+  color: $four-athens-sky;
+  padding-right: 25px;
 }
 
 .slotted-container{
