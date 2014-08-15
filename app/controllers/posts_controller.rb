@@ -15,7 +15,6 @@ end
   def create
     @newpost = Post.new(post_params)
   	if @newpost.save(post_params)
-      flash[:notice] = "Post created successfully."
       redirect_to(:action => 'index')
     else
      flash[:notice] = "Post was not creates successfully."
@@ -28,9 +27,10 @@ end
 
   def destroy
     post = Post.find(params[:id]).destroy
-    flash[:notice] = "Post destroyed successfully."
     redirect_to(:action => 'index')
   end
+
+
 
 private
 

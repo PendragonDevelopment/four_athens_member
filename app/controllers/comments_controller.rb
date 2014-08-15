@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
   def create
     @newcomment = Comment.new(comment_params)
   	if @newcomment.save(comment_params)
-      flash[:notice] = "Comment created successfully."
       redirect_to(:controller => "posts", :action => 'index')
     else
      flash[:notice] = "Comment was not creates successfully."
@@ -23,7 +22,6 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id]).destroy
-    flash[:notice] = "Comment destroyed successfully."
     redirect_to(:controller => "posts", :action => 'index')
   end
 

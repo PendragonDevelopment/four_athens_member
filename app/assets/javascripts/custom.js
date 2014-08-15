@@ -5,6 +5,8 @@ $(document).ready(function() {
 	$("#hidden-textarea").hide();
 	$(".reply-form").hide();
 
+	$(".alert-info").delay(3000).fadeOut("fast", "linear");
+
 
 	$("#newpost").on("click", function() {
  		$("#hidden-textarea").fadeToggle("fast", "linear");
