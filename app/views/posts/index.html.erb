@@ -1,9 +1,48 @@
-   <h1>Whiteboard</h1>
+   <div class="text-center">
+   <div class="btn-group">
+
+  <button class="btn btn-default btn-lg dropdown-toggle " type="button" data-toggle="dropdown">
+    Whiteboard <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Hiring</a></li>
+    <li><a href="#">Promote</a></li>
+    <li><a href="#">Launch</a></li>
+    <li><a href="#">Tools</a></li>
+    <li><a href="#">Requests</a></li>
+    <li><a href="#">Event</a></li> 
+</div>
+</div>
    
 
    <h3 id="newpost" class="new-post"> &lt;new_post&gt;</h3>
       <div class="input-append" id="hidden-textarea">
         <div class="input-group-btn">
+
+          <div class="btn-group btn-group-justified" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="checkbox" checked="checked"> General
+            </label>
+            <label class="btn btn-primary">
+              <input type="checkbox"> Hiring
+            </label>
+            <label class="btn btn-primary">
+              <input type="checkbox"> Promote
+            </label>
+            <label class="btn btn-primary">
+              <input type="checkbox"> Launch
+            </label>
+            <label class="btn btn-primary">
+              <input type="checkbox"> Tools
+            </label>
+            <label class="btn btn-primary">
+              <input type="checkbox"> Request
+            </label>
+            <label class="btn btn-primary">
+              <input type="checkbox"> Event
+            </label>
+          </div>
+
           <%= form_for(:post, :url => {:action => 'create'}) do |f| %>
           <%= f.text_area(:post_content, rows:5, class: "form-control") %>  
           <%= if user_signed_in? then f.hidden_field(:user_id, :value => current_user.id) end%>
