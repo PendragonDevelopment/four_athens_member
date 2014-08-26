@@ -3,14 +3,14 @@ class PostsController < ApplicationController
 
   def index
   	@posts = Post.order("posts.created_at DESC")
-  	@comments = Comment.order("comments.created_at ASC")
-  
-  
+  	@comments = Comment.order("comments.created_at ASC")  
+    @page = "Whiteboard"
+
   end
 
-def new
-  @newpost = Post.new({:name => "default"})
-end
+  def new
+    @newpost = Post.new({:name => "default"})
+  end
 
   def create
       @newpost = Post.new(post_params)
@@ -44,12 +44,47 @@ end
     redirect_to root_path
   end
 
+  def hiring
+    @posts = Post.where({ hiring: 1}).order("posts.created_at DESC")
+    @comments = Comment.order("comments.created_at ASC")
+    @page = "Hiring"
+  end
+
+  def promote
+    @posts = Post.where({ promote: 1}).order("posts.created_at DESC")
+    @comments = Comment.order("comments.created_at ASC")
+    @page = "Promote"
+  end
+  def launch
+    @posts = Post.where({ launch: 1}).order("posts.created_at DESC")
+    @comments = Comment.order("comments.created_at ASC")
+    @page = "Launch"
+  end
+  def tools
+    @posts = Post.where({ tools: 1}).order("posts.created_at DESC")
+    @comments = Comment.order("comments.created_at ASC")
+    @page = "Tools"
+
+  end
+  def request_thing
+    @posts = Post.where({ request: 1}).order("posts.created_at DESC")
+    @comments = Comment.order("comments.created_at ASC")
+    @page = "Requests"
+  end
+  def event
+    @posts = Post.where({ event: 1}).order("posts.created_at DESC")
+    @comments = Comment.order("comments.created_at ASC")
+    @page = "Events"
+
+  end
+
+
 
 
 private
 
     def post_params
-      params.require(:post).permit(:user_id, :post_content)
+      params.require(:post).permit(:user_id, :post_content, :hiring, :promote, :launch, :tools, :request, :event)
     end
 
 

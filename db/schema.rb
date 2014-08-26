@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815024455) do
+ActiveRecord::Schema.define(version: 20140826183616) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 20140815024455) do
     t.text     "post_content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "hiring",       default: false
+    t.boolean  "promote",      default: false
+    t.boolean  "launch",       default: false
+    t.boolean  "tools",        default: false
+    t.boolean  "request",      default: false
+    t.boolean  "event",        default: false
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree

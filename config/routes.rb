@@ -20,7 +20,16 @@ Rails.application.routes.draw do
   get 'user/edit'
   get 'user/show'
 
-  resources :posts
+  resources :posts do
+    collection do
+      get :hiring
+      get :promote
+      get :launch
+      get :tools
+      get :request_thing
+      get :event
+    end
+  end
 
   resources :users
   resources :comments
