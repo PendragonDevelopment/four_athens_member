@@ -7,7 +7,7 @@ gem 'rails', '4.1.4'
 gem 'mysql2'
 
 gem 'devise', '~> 3.3.0'
-
+gem 'thin'
 
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
