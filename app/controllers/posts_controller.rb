@@ -13,13 +13,27 @@ def new
 end
 
   def create
-    @newpost = Post.new(post_params)
-  	if @newpost.save(post_params)
-      redirect_to(:action => 'index')
-    else
-     flash[:notice] = "Post was not creates successfully."
-      render('index')
-    end
+      @newpost = Post.new(post_params)
+        
+      unless @newpost.post_content == ""
+      	if @newpost.save(post_params)
+          redirect_to root_path
+
+  
+        else
+          flash[:alert] = "Post was not created successfully."
+          @posts = Post.order("posts.created_at DESC")
+          @comments = Comment.order("comments.created_at ASC")
+          redirect_to root_path
+        end
+      else
+          flash[:alert] = "Post cannot be blank."
+          @posts = Post.order("posts.created_at DESC")
+          @comments = Comment.order("comments.created_at ASC")
+          redirect_to root_path        
+
+      end
+
   end
 
   def delete
