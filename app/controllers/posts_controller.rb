@@ -41,7 +41,7 @@ end
 
   def destroy
     post = Post.find(params[:id]).destroy
-    redirect_to(:action => 'index')
+    redirect_to root_path
   end
 
 
