@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+before_action :authenticate_user!
 
   def index
   	@posts = Post.order("posts.created_at DESC")
@@ -9,11 +9,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @newpost = Post.new({:name => "default"})
+    @newpost = current_user.posts.build({:name => "default"})
   end
 
   def create
-      @newpost = Post.new(post_params)
+      @newpost = current_user.posts.build(post_params)
         
       unless @newpost.post_content == ""
       	if @newpost.save(post_params)
