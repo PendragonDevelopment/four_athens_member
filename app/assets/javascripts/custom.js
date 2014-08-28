@@ -7,7 +7,6 @@ $(document).ready(function() {
 	$("#hidden-textarea").hide();
 	$(".reply-form").hide();
 
-	
 
 
 $("form").submit(function() {

@@ -1,0 +1,12 @@
+
+$('#posts').append('<%= j render("post") %>');
+<% if @posts.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@posts) %>');
+<% else %>
+  $('.pagination').remove();
+  sleep(1);
+  $(".reply-form").hide();
+
+<% end %>
+
+

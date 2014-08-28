@@ -2,10 +2,10 @@ class PostsController < ApplicationController
 before_action :authenticate_user!
 
   def index
-  	@posts = Post.order("posts.created_at DESC")
-  	@comments = Comment.order("comments.created_at ASC")  
-    @page = "Whiteboard"
+    @comments = Comment.order("comments.created_at ASC")  
 
+    @page = "Whiteboard"
+    @posts = Post.order("posts.created_at DESC").page(params[:page]).per_page(10)
   end
 
   def new
@@ -55,27 +55,29 @@ before_action :authenticate_user!
     @comments = Comment.order("comments.created_at ASC")
     @page = "Promote"
   end
+
   def launch
     @posts = Post.where({ launch: 1}).order("posts.created_at DESC")
     @comments = Comment.order("comments.created_at ASC")
     @page = "Launch"
   end
+
   def tools
     @posts = Post.where({ tools: 1}).order("posts.created_at DESC")
     @comments = Comment.order("comments.created_at ASC")
     @page = "Tools"
-
   end
+  
   def request_thing
     @posts = Post.where({ request: 1}).order("posts.created_at DESC")
     @comments = Comment.order("comments.created_at ASC")
     @page = "Requests"
   end
+  
   def event
     @posts = Post.where({ event: 1}).order("posts.created_at DESC")
     @comments = Comment.order("comments.created_at ASC")
     @page = "Events"
-
   end
 
 
