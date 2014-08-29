@@ -45,37 +45,37 @@ before_action :authenticate_user!
   end
 
   def hiring
-    @posts = Post.where({ hiring: 1}).order("posts.created_at DESC")
+    @posts = Post.where({ hiring: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Hiring"
   end
 
   def promote
-    @posts = Post.where({ promote: 1}).order("posts.created_at DESC")
+    @posts = Post.where({ promote: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Promote"
   end
 
   def launch
-    @posts = Post.where({ launch: 1}).order("posts.created_at DESC")
+    @posts = Post.where({ launch: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Launch"
   end
 
   def tools
-    @posts = Post.where({ tools: 1}).order("posts.created_at DESC")
+    @posts = Post.where({ tools: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Tools"
   end
   
   def request_thing
-    @posts = Post.where({ request: 1}).order("posts.created_at DESC")
+    @posts = Post.where({ request: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Requests"
   end
   
   def event
-    @posts = Post.where({ event: 1}).order("posts.created_at DESC")
+    @posts = Post.where({ event: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Events"
   end
