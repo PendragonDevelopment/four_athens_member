@@ -33,4 +33,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "4096"]
   end
+
+  config.vm.provision :shell, :path => "install-mysql.sh"
 end
