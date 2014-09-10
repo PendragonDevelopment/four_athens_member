@@ -39,7 +39,7 @@
 
                 <h3 class="writer title"><%= comment.user.first_name  + " " + comment.user.last_name %>
                   <% if user_signed_in? %>
-                    <% if post.user_id == current_user.id %>
+                    <% if comment.user_id == current_user.id %>
                       <span class ="deleted">
                         <%= link_to "x", comment, method: :delete, data: { confirm: "Click 'Confirm' to delete." } %>
                       </span>
