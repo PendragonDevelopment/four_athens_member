@@ -37,12 +37,15 @@
               <% if comment.post_id == post.id %>
         	      <div class="comment">
 
-                <h3 class="writer title"><%= comment.user.first_name  + " " + comment.user.last_name %><span class ="deleted">
+                <h3 class="writer title"><%= comment.user.first_name  + " " + comment.user.last_name %>
                   <% if user_signed_in? %>
-                    <% if post.user_id.to_i == current_user.id %>
-                      <%= link_to "x", comment, method: :delete, data: { confirm: "Click 'Confirm' to delete." } %>
+                    <% if post.user_id == current_user.id %>
+                      <span class ="deleted">
+                        <%= link_to "x", comment, method: :delete, data: { confirm: "Click 'Confirm' to delete." } %>
+                      </span>
                     <% end %>
                   <% end %>
+
                  </h3>
         	       <p class="content"><%= comment.comment_content %></p>
         	       <p class="posted-comment">posted <%= distance_of_time_in_words_to_now(comment.created_at) + " ago." %></p>
