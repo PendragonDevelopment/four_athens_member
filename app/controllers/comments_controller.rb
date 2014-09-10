@@ -2,11 +2,12 @@ class CommentsController < ApplicationController
 
 
   def new
-    @newcomment = Comment.new({:name => "default"})
+    @newcomment = current_user.comments.build({:name => "default"})
   end
 
   def create
-    @newcomment = Comment.new(comment_params)
+      @newcomment = current_user.comments.build(comment_params)
+
       unless @newcomment.comment_content == ""
       	if @newcomment.save(comment_params)
           redirect_to(:controller => "posts", :action => 'index')
