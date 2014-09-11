@@ -38,7 +38,7 @@
 </div>
 
    <h3 id="newpost" class="new-post"> &lt;new_post&gt;</h3>
-      <div class="input-append" id="hidden-textarea">
+      <div class="input-append" id="hiddenTextareaDiv">
         <div class="input-group-btn">
 
 
@@ -69,7 +69,7 @@
                 <%= f.check_box(:event) %>Event
               </label>
             </div>
-          <%= f.text_area(:post_content, rows:5, class: "form-control") %>  
+          <%= f.text_area(:post_content, rows:5, class: "form-control newPostTextArea") %>  
          
           <%= if user_signed_in? then f.hidden_field(:user_id, :value => current_user.id) end%>
 

@@ -4,35 +4,38 @@
 $(document).ready(function() {
 
 	//hide textareas
-	$("#hidden-textarea").hide();
+	$("#hiddenTextareaDiv").hide();
 	$(".reply-form").hide();
 
 
+    //whiteboard form validation
+	$("form").submit(function() {
+		$("div.error").remove();
+		var this_textarea = $(this).find(".form-control");
+		if (this_textarea.val()==='') {
+				$(this).before('<div class="error alert alert-info">Did you forget something?</div>');
+				event.preventDefault();
+			};
 
-$("form").submit(function() {
-			$("div.error").remove();
-			var this_textarea = $(this).find(".form-control");
-			if (this_textarea.val()==='') {
-					$(this).before('<div class="error alert alert-info">Did you forget something?</div>');
-					event.preventDefault();
-				};
-
-		});
+	});
 
 
-
+	
 	$(".alert-info").delay(4000).fadeOut("fast", "linear");
 
 
 	$("#newpost").on("click", function() {
- 		$("#hidden-textarea").fadeToggle("fast", "linear");
+ 		$("#hiddenTextareaDiv").fadeToggle("fast", "linear");
+ 		$(".newPostTextArea").focus();
 	});
 
 	$(".show-reply").on("click", function(event) {
 		var parentContainer = $(event.target).closest(".initial-post");
 
-		var	replyTextarea = parentContainer.find(".reply-form");
-		replyTextarea.fadeToggle("fast", "linear");
+		var	replyTextareaDiv = parentContainer.find(".reply-form");
+		replyTextareaDiv.fadeToggle("fast", "linear");
+		var replyTextarea = parentContainer.find(".reply-txtarea");
+		replyTextarea.focus();
 	});
 
 });

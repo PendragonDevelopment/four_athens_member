@@ -26,7 +26,7 @@
             <span class="input-group-btn">
             <%= form_for(:comment, :url => {:controller => :comments, :action => 'create'}) do |f| %>
             <%= f.hidden_field :post_id, :value => post.id %>
-            <%= f.text_area(:comment_content, rows:5, class: "form-control") %>  
+            <%= f.text_area(:comment_content, rows:5, class: "reply-txtarea form-control") %>  
             <%= f.submit(class: 'btn btn-default') %>
             </span>
             <% end %>     

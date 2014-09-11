@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+  
   def index
   end
 
@@ -10,4 +11,5 @@ class UserController < ApplicationController
 
   def show
   end
+
 end
