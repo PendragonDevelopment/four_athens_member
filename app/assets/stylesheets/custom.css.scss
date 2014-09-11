@@ -98,6 +98,7 @@ a {
 @media (max-width: 768px) {
   .navlink {
     text-align: center;
+    cursor: pointer;
   } 
 }
 
@@ -242,6 +243,9 @@ margin-left: 20px;
   width: 250px;
 }
 
+.navlink {
+    cursor: pointer;
+}
 .disabled2 {
   display:none !important;
 }
