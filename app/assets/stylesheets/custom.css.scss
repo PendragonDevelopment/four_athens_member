@@ -122,9 +122,10 @@ margin-left: 20px;
 .title {
   font-size: 1.4em;
   color: $main-color;
-  cursor: pointer;
   margin-bottom: 10px;
 }
+
+
 .writer{
 }
 .content {
@@ -234,18 +235,117 @@ margin-left: 20px;
 }
 
 
-.socmed{
-    display: inline;
-}
 
-.profile-ul {
-  padding-left: 0px;
-  width: 250px;
-}
 
 .navlink {
     cursor: pointer;
 }
 .disabled2 {
   display:none !important;
+}
+
+
+/* profile */
+/* profile divs*/
+.profile-entry {
+  clear: both;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #d8d8d8;
+
+}
+.profile-image-div {
+  float: left;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+}
+.profile-text{
+  width: 60%;
+  float: left;
+}
+
+.profile-socmed-div{
+  width: 36px;
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+
+
+}
+.profile-label-div {
+  clear: both;
+
+}
+
+/* profile elements */
+.profile-ul {
+  padding-left: 0px;
+  display: inline;
+  list-style-type: none;
+
+
+}
+
+.profile-label{
+  display: inline;
+  padding: 5px;
+  color: #ccc;
+
+}
+
+.label-default2 {
+  background-color: #ccc;
+  font-size: 10pt;
+  line-height: 2em;
+}
+
+.profile-socmed{
+  color: #ccc;
+}
+
+.socmed{
+    display: inline;
+}
+
+@media (max-width: 767px){
+  .profile-entry {
+    clear: both;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+  .profile-text {
+    width: 100%;
+  }
+
+  .profile-socmed-div{
+  width: 100%;
+  float: none;
+  clear: both;
+  margin-bottom: 10px;
+  }
+  .profile-image-div{
+  margin: 20px auto 0 auto;
+  }
+  .profile-socmed{
+    color: #ccc;
+    display: inline;
+
+  }
+  .profile-ul {
+    margin: 0 auto 0 auto;
+    list-style-type: none;
+  }
+}
+
+
+@media (max-width: 480px){
+  .profile-image-div{
+    width: 100%;
+    text-align: center;
+  }
+
 }

@@ -7,6 +7,7 @@ gem 'rails', '4.1.4'
 gem 'mysql2'
 
 gem 'devise', '~> 3.3.0'
+gem 'mandrill-api', '~> 1.0.52'
 gem 'thin'
 gem 'will_paginate', '~> 3.0.7'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'

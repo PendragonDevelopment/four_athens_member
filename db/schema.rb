@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826183616) do
+ActiveRecord::Schema.define(version: 20140912220647) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -39,14 +39,43 @@ ActiveRecord::Schema.define(version: 20140826183616) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id"
+    t.string   "position"
+    t.string   "company"
+    t.string   "phone"
+    t.string   "micro_bio"
+    t.string   "linked_in"
+    t.string   "twitter"
+    t.string   "dribble"
+    t.string   "behance"
+    t.string   "codepen"
+    t.string   "github"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "skills", force: true do |t|
+    t.string   "skill_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "skills_users", id: false, force: true do |t|
+    t.integer "skill_id"
+    t.integer "user_id"
+  end
+
+  add_index "skills_users", ["skill_id", "user_id"], name: "index_skills_users_on_skill_id_and_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email_address"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
-    t.string   "password_digest"
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"

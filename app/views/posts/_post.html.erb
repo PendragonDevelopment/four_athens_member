@@ -7,7 +7,7 @@
         <div class = "initial-post">
           <h3 class="title writer"><%= post.user.first_name + " " + post.user.last_name %> <span class ="deleted">
           <% if user_signed_in? %>
-            <% if post.user_id.to_i == current_user.id %>
+            <% if post.user_id.to_i == current_user.id  %>
             <%= link_to "x", post, method: :delete, data: { confirm: "Click 'Confirm' to delete." } %>
             <% end %>
           <% end %>

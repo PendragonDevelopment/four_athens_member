@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
-
-  get 'profiles/index'
+  get 'directory/', to: 'profiles#index'
 
   get 'profiles/edit'
 

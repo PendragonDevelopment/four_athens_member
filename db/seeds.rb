@@ -5,3 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+skill_list = [
+	"html + css",
+	"javascript",
+	"php",
+	"Objective C",
+	"Ruby/Rails",
+	"Scala",
+	"iOS",
+	"Android",
+	"SQL",
+	"SEO",
+	"Marketing",
+	"Sales",
+	"Legal",
+	"Operations"
+]
+
+skill_list.each do |skill|
+	Skill.create( skill_name: skill)
+end
