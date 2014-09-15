@@ -69,7 +69,7 @@
                 <%= f.check_box(:event) %>Event
               </label>
             </div>
-          <%= f.text_area(:post_content, rows:5, class: "form-control newPostTextArea") %>  
+          <%= f.text_area(:post_content, rows:5, class: "form-control newPostTextArea form-validate") %>  
          
           <%= if user_signed_in? then f.hidden_field(:user_id, :value => current_user.id) end%>
 

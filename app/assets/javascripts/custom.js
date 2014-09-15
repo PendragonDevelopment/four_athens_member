@@ -11,7 +11,7 @@ $(document).ready(function() {
     //whiteboard form validation
 	$("form").submit(function() {
 		$("div.error").remove();
-		var this_textarea = $(this).find(".form-control");
+		var this_textarea = $(this).find(".form-validate");
 		if (this_textarea.val()==='') {
 				$(this).before('<div class="error alert alert-info">Did you forget something?</div>');
 				event.preventDefault();

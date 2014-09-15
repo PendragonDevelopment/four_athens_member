@@ -2,7 +2,8 @@
 	<div class="profile-entry">
 
 		<div class="profile-image-div">
-			<%= image_tag("jburke.jpg", height: '125', width: '125') %>
+			<%= image_tag user.profile.avatar.url(:medium), size: "125x125" %>
+
 		</div>
 
 		<div class="profile-text">
@@ -31,6 +32,10 @@
 					<li class="profile-socmed"><a href="<%= user.profile.twitter %>" target="_blank"> <i class="fa fa-twitter-square fontaweplus"></i></a> </li>
 				<% end %>
 
+				<% if !user.profile.github.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.github %>" target="_blank"> <i class="fa fa-github-square fontaweplus"></i></a> </li>
+				<% end %>
+
 				<% if !user.profile.dribble.blank? %>
 					<li class="profile-socmed"><a href="<%= user.profile.dribble %>" target="_blank"> <i class="fa fa-dribbble fontaweplus"></i></a> </li>
 				<% end %>
@@ -42,11 +47,6 @@
 				<% if !user.profile.codepen.blank? %>
 					<li class="profile-socmed"><a href="<%= user.profile.codepen %>" target="_blank"> <i class="fa fa-codepen fontaweplus"></i></a> </li>
 				<% end %>
-
-				<% if !user.profile.github.blank? %>
-					<li class="profile-socmed"><a href="<%= user.profile.github %>" target="_blank"> <i class="fa fa-github-square fontaweplus"></i></a> </li>
-				<% end %>
-
 			</ul>
 		</div>
 		

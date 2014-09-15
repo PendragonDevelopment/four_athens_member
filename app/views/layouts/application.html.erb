@@ -50,7 +50,10 @@
 
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li role="presentation"><a class="navlink"role="menuitem" tabindex="-1" href="/users/edit">User Settings</a></li>
-                <li role="presentation"><a class="navlink" role="menuitem" tabindex="-1" href="#">User Profile</a></li>
+                <li role="presentation">
+
+                <%= link_to "User Profile", profiles_edit_path, class: "navlink", :role => "menuitem", :tabindex => "-1" %>
+                </li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navlink", role:"menuitem" %></li>
 

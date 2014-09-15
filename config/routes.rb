@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'directory/', to: 'profiles#index'
 
   get 'profiles/edit'
+  post 'profiles/update'
+  patch 'profiles/update'
+
 
   get 'schedules/index'
 
