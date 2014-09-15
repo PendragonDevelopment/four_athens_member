@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   get 'directory/', to: 'profiles#index'
 
-  get 'profiles/edit'
-  post 'profiles/update'
-  patch 'profiles/update'
 
 
   get 'schedules/index'
@@ -32,7 +30,8 @@ Rails.application.routes.draw do
       get :event
     end
   end
-
+  resources :skills
+  resources :profiles
   resources :users
   resources :comments
 

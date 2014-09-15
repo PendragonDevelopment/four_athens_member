@@ -1,0 +1,63 @@
+<% @users.each do |user| %>
+	<div class="profile-entry">
+
+			<div class="profile-image-div">
+				<%= image_tag user.profile.avatar.url(:medium), size: "125x125" %>
+
+			</div>
+
+		<div class="profile-text">
+			<h3 class = "title"> <%= link_to user.first_name + " " + user.last_name, profile_path(user.id) %> </h3>
+			<% if !user.profile.position.blank? && !user.profile.company.blank? %>
+				<p><strong><%= user.profile.position + " @ " + user.profile.company  %></strong></p>
+			<% end %>
+
+				<p><a href="mailto:<%= user.email %>"><%= user.email %></a></p>
+			<% if !user.profile.phone.blank? %>
+				<p><a href="tel:<%= user.profile.phone %>"><%= user.profile.phone %></a></p>
+			<% end %>
+
+			<% if !user.profile.micro_bio.blank? %>
+				<p>"<%= user.profile.micro_bio %>" </p>
+			<% end %>
+		</div>
+		
+		<div class="profile-socmed-div">
+			<ul class="profile-ul" >
+				<% if !user.profile.linked_in.blank? %>
+				 	<li class="profile-socmed"><a href="<%= user.profile.linked_in %>" target="_blank"> <i class="fa fa-linkedin fontaweplus"></i></a> </li>
+				<% end %>
+
+				<% if !user.profile.twitter.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.twitter %>" target="_blank"> <i class="fa fa-twitter-square fontaweplus"></i></a> </li>
+				<% end %>
+
+				<% if !user.profile.github.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.github %>" target="_blank"> <i class="fa fa-github-square fontaweplus"></i></a> </li>
+				<% end %>
+
+				<% if !user.profile.dribble.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.dribble %>" target="_blank"> <i class="fa fa-dribbble fontaweplus"></i></a> </li>
+				<% end %>
+
+				<% if !user.profile.behance.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.behance %>" target="_blank"> <i class="fa fa-behance-square fontaweplus"></i></a> </li>
+				<% end %>
+				
+				<% if !user.profile.codepen.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.codepen %>" target="_blank"> <i class="fa fa-codepen fontaweplus"></i></a> </li>
+				<% end %>
+			</ul>
+		</div>
+		
+		<div class="profile-label-div">
+			<ul class="profile-ul">
+				<% user.skills.each do |skill| %>
+					<li class="profile-label"><span class="label label-default2"><%= link_to skill.skill_name, skill_path(skill.id) %></span></li>
+
+				<% end %>
+			</ul>
+		</div>
+
+	</div>
+<% end %>

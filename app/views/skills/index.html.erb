@@ -1,0 +1,7 @@
+
+
+	<% @skills.each do |skill| %>
+	 <%= link_to skill.skill_name, skill_path(skill.id) %>
+   <br>
+
+	<% end  %>

@@ -1,0 +1,105 @@
+<% user = @user %>
+	<div class="profile-entry">
+
+		<div class="profile-image-div">
+			<%= image_tag user.profile.avatar.url(:medium), size: "125x125" %>
+
+		</div>
+
+		<div class="profile-text">
+			<h3 class="title"><%=user.first_name + " " + user.last_name  %></h3>
+			<% if !user.profile.position.blank? && !user.profile.company.blank? %>
+				<p><strong><%= user.profile.position + " @ " + user.profile.company  %></strong></p>
+			<% end %>
+
+				<p><a href="mailto:<%= user.email %>"><%= user.email %></a></p>
+			<% if !user.profile.phone.blank? %>
+				<p><a href="tel:<%= user.profile.phone %>"><%= user.profile.phone %></a></p>
+			<% end %>
+
+			<% if !user.profile.position.blank? %>
+				<p>"<%= user.profile.micro_bio %>" </p>
+			<% end %>
+		</div>
+		
+		<div class="profile-socmed-div">
+			<ul class="profile-ul" >
+				<% if !user.profile.linked_in.blank? %>
+				 	<li class="profile-socmed"><a href="<%= user.profile.linked_in %>" target="_blank"> <i class="fa fa-linkedin fontaweplus"></i></a> </li>
+				<% end %>
+
+				<% if !user.profile.twitter.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.twitter %>" target="_blank"> <i class="fa fa-twitter-square fontaweplus"></i></a> </li>
+				<% end %>
+
+				<% if !user.profile.github.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.github %>" target="_blank"> <i class="fa fa-github-square fontaweplus"></i></a> </li>
+				<% end %>
+
+				<% if !user.profile.dribble.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.dribble %>" target="_blank"> <i class="fa fa-dribbble fontaweplus"></i></a> </li>
+				<% end %>
+
+				<% if !user.profile.behance.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.behance %>" target="_blank"> <i class="fa fa-behance-square fontaweplus"></i></a> </li>
+				<% end %>
+				
+				<% if !user.profile.codepen.blank? %>
+					<li class="profile-socmed"><a href="<%= user.profile.codepen %>" target="_blank"> <i class="fa fa-codepen fontaweplus"></i></a> </li>
+				<% end %>
+			</ul>
+		</div>
+		
+		<div class="profile-label-div">
+			<ul class="profile-ul">
+				<% user.skills.each do |skill| %>
+					<li class="profile-label"><span class="label label-default2"><%= link_to skill.skill_name, skill_path(skill.id) %></span></li>
+				<% end %>
+			</ul>
+		</div>
+
+	</div>
+
+<% if @posts.present? %>
+	<h2><%= user.first_name %>'s Posts</h2>
+
+  <% @posts.each do |post| %>
+      
+
+
+      <div class="post" >
+        <div class = "initial-post">
+          <h3 class="title writer"><%= post.user.first_name + " " + post.user.last_name %> <span class ="deleted">
+
+   
+          </span></h3>
+          
+        
+
+          <p class="content"><%= simple_format(post.post_content) %></p>
+          <p class="posted">posted <%= distance_of_time_in_words_to_now(post.created_at) + " ago." %>
+          </p>
+
+          <div class="input-append reply-form">
+      
+ 
+          </div> 
+        </div>
+        <div class="comments">
+          <% @comments.each do |comment| %>
+              <% if comment.post_id == post.id %>
+        	      <div class="comment">
+
+                <h3 class="writer title"><%= link_to_unless_current comment.user.first_name + " " + comment.user.last_name, profile_path(comment.user.id)  %>
+
+
+                 </h3>
+        	       <p class="content"><%= simple_format(comment.comment_content) %></p>
+        	       <p class="posted-comment">posted <%= distance_of_time_in_words_to_now(comment.created_at) + " ago." %></p>
+                </div>
+              <% end %>          
+          <% end %>
+        </div>
+	    </div>
+    <% end %>
+<% end %>

@@ -4,12 +4,19 @@ class ProfilesController < ApplicationController
   	@skills = Skill.order('id')
   end
 
+  def show
+    @user = User.find(params[:id])
+    @skills = Skill.order('id')
+    @posts = Post.where({ user_id: params[:id]}).order("posts.created_at DESC")
+    @comments = Comment.order("comments.created_at ASC")  
+  end
+
+
   def edit
   	 @profile = current_user.profile
      @skills = Skill.order('id')
-
-
   end
+
   def update
   	  @profile = current_user.profile.update(profile_params)
       skill_array = params[:user][:skill_ids].to_a

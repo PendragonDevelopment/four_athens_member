@@ -5,7 +5,7 @@
 
       <div class="post" >
         <div class = "initial-post">
-          <h3 class="title writer"><%= post.user.first_name + " " + post.user.last_name %> <span class ="deleted">
+          <h3 class="title writer"> <%= link_to post.user.first_name + " " + post.user.last_name, profile_path(post.user.id)  %> <span class ="deleted">
           <% if user_signed_in? %>
             <% if post.user_id.to_i == current_user.id  %>
             <%= link_to "x", post, method: :delete, data: { confirm: "Click 'Confirm' to delete." } %>
@@ -14,7 +14,7 @@
    
           </span></h3>
           
-        
+
 
           <p class="content"><%= simple_format(post.post_content) %></p>
           <p class="posted">posted <%= distance_of_time_in_words_to_now(post.created_at) + " ago." %>
@@ -37,7 +37,7 @@
               <% if comment.post_id == post.id %>
         	      <div class="comment">
 
-                <h3 class="writer title"><%= comment.user.first_name  + " " + comment.user.last_name %>
+                <h3 class="writer title"><%= link_to comment.user.first_name + " " + comment.user.last_name, profile_path(comment.user.id)  %>
                   <% if user_signed_in? %>
                     <% if comment.user_id == current_user.id %>
                       <span class ="deleted">

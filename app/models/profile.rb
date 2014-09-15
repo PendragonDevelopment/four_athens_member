@@ -4,4 +4,7 @@ class Profile < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
+
+  validates :micro_bio, length: { maximum: 140 }
+
 end
