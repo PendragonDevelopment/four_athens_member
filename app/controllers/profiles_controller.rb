@@ -19,6 +19,9 @@ class ProfilesController < ApplicationController
 
   def update
   	  @profile = current_user.profile.update(profile_params)
+  
+
+
       skill_array = params[:user][:skill_ids].to_a
       skill_array.each_with_index do |s, i|
         skill_array[i] = s.to_i unless skill_array[i].blank?

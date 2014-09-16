@@ -14,11 +14,12 @@
 
 				<p><a href="mailto:<%= user.email %>"><%= user.email %></a></p>
 			<% if !user.profile.phone.blank? %>
-				<p><a href="tel:<%= user.profile.phone %>"><%= user.profile.phone %></a></p>
+				<% number = number_to_phone(user.profile.phone.tr('^0-9', '',).to_i, delimiter: ".") %>
+				<p><a href="tel:<%= number %>"><%= number %></a></p>
 			<% end %>
 
 			<% if !user.profile.micro_bio.blank? %>
-				<p>"<%= user.profile.micro_bio %>" </p>
+				<p>- <%= user.profile.micro_bio %> -</p>
 			<% end %>
 		</div>
 		

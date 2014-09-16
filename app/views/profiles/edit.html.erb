@@ -23,7 +23,7 @@
   	<div class="form-group">
     		<%= label_tag "Phone", nil, class: "col-sm-2 control-label" %>
     	<div class="col-sm-10">
-			<%= form.text_field :phone, class: "form-control"%>
+			<%= form.text_field :phone, class: "form-control" %>
 		</div>
 	</div> 
   	<div class="form-group">
@@ -35,39 +35,38 @@
   	<div class="form-group">
     		<%= label_tag "Linked_In", nil, class: "col-sm-2 control-label" %>
     	<div class="col-sm-10">
-			<%= form.text_field :linked_in, class: "form-control"%>
+			<%= form.text_field :linked_in, class: "form-control", placeholder: "https://www.linkedin.com/in/yourname"%>
 		</div>
 	</div> 
   	<div class="form-group">
     		<%= label_tag "Twitter", nil, class: "col-sm-2 control-label" %>
     	<div class="col-sm-10">
-			<%= form.text_field :twitter, class: "form-control"%>
+			<%= form.text_field :twitter, class: "form-control", placeholder: "https://twitter.com/yourname"%>
 		</div>
 	</div> 
   	<div class="form-group">
     		<%= label_tag "github", nil, class: "col-sm-2 control-label" %>
     	<div class="col-sm-10">
-			<%= form.text_field :github, class: "form-control"%>
+			<%= form.text_field :github, class: "form-control", placeholder: "https://github.com/yourname" %>
 		</div>
 	</div> 
   	<div class="form-group">
     		<%= label_tag "Dribble", nil, class: "col-sm-2 control-label" %>
     	<div class="col-sm-10">
-			<%= form.text_field :dribble, class: "form-control"%>
+			<%= form.text_field :dribble, class: "form-control", placeholder: "https://dribbble.com/yourname"%>
 		</div>
 	</div> 
   	<div class="form-group">
     		<%= label_tag "Behance", nil, class: "col-sm-2 control-label" %>
     	<div class="col-sm-10">
-			<%= form.text_field :behance, class: "form-control"%>
+			<%= form.text_field :behance, class: "form-control", placeholder: "https://www.behance.net/yourname"%>
 		</div>
 	</div> 
-
 
   	<div class="form-group">
     		<%= label_tag "Codepen", nil, class: "col-sm-2 control-label" %>
     	<div class="col-sm-10">
-			<%= form.text_field :codepen, class: "form-control"%>
+			<%= form.text_field :codepen, class: "form-control", placeholder: "http://codepen.io/yourname/"%>
 		</div>
 	</div> 
 	<%= hidden_field_tag "user[skill_ids][]", nil %>
