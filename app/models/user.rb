@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  
+  acts_as_mentionable
+  
   after_create :create_profile
   has_many :comments
   has_many :posts
@@ -15,8 +17,7 @@ class User < ActiveRecord::Base
 
   def create_profile
   	self.build_profile
-  	self.profile.save
-  	
+  	self.profile.save  	
   end
 
 end

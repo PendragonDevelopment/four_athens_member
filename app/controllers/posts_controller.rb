@@ -6,6 +6,12 @@ before_action :authenticate_user!
 
     @page = "Whiteboard"
     @posts = Post.order("posts.created_at DESC").page(params[:page]).per_page(10)
+    user_name = User.pluck(:first_name, :last_name)
+    a = []
+    user_name.each do |i|
+      a << i.join("_")
+    end
+    @username = a
   end
 
   def new
@@ -13,10 +19,22 @@ before_action :authenticate_user!
   end
 
   def create
+      u = User.all
+      h = {}
+      u.each do |i|
+        h["@" + i.first_name + "_" + i.last_name] = i.id
+      end
+
       @newpost = current_user.posts.build(post_params)
         
       unless @newpost.post_content == ""
       	if @newpost.save(post_params)
+          h.each do |k,v|
+            if @newpost.post_content.include? k
+              @newpost.mention!(User.find_by_id(v))
+              MentionNotification.mention_post(v, @newpost).deliver 
+            end
+          end
           redirect_to root_path
 
   

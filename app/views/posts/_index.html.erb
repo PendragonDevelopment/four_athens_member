@@ -70,14 +70,18 @@
               </label>
             </div>
           <%= f.text_area(:post_content, rows:5, class: "form-control newPostTextArea form-validate") %>  
+            <script> 
+                $(function(){
+                    data = <%= raw @username.compact.to_json %> ;
+                    $('textarea').atwho({at:"@", 'data':data});
+                });
+            </script>
          
-          <%= if user_signed_in? then f.hidden_field(:user_id, :value => current_user.id) end%>
 
 
           <%= f.submit(class: 'btn btn-default') %>
         </div>
         <% end %>
-
      </div>     
 
 

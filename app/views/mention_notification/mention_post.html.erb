@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Hi, <%= @user.first_name %>!</h1>
+    <p>
+      You were mentioned in a post.<br>
+    </h2>
+    <h3>
+      <%= @post.user.first_name + " " + @post.user.last_name + ": " %>
+    </h3>
+    <p>
+      <%= @post.post_content %>
+    </p>
+    <p>
+      To view the WhiteBoard, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>
