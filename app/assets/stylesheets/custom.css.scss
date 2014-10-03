@@ -350,3 +350,49 @@ margin-left: 20px;
   }
 
 }
+
+
+.more-span {
+  color: $four-athens-sky;
+  cursor: pointer;
+
+}
+.less-span {
+  color: $four-athens-sky;
+  cursor: pointer;
+
+
+}
+
+.descript-init-hidden {
+  display: none;
+}
+
+// Scedules
+.event {
+  margin-bottom: 15px;
+}
+.event-title {
+  text-align: left;
+  margin: 3px;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: $four-athens-navy;
+}
+.event-datatime {
+  text-align: left;
+  margin: 3px;
+  font-size: 1.0em;
+  font-weight: 400;
+  color: rgb(153, 153, 153);
+}
+
+.event-deets {
+  margin: 5px 0 5px 18px;
+  color: rgb(153, 153, 153);
+}
+
+.event-deets-heading {
+  font-weight: 600;
+  color: $four-athens-blue;
+}

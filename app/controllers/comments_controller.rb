@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-     
       u = User.all
       h = {}
       u.each do |i|
@@ -23,20 +22,6 @@ class CommentsController < ApplicationController
               MentionNotification.mention_comment(v, @newcomment).deliver 
             end
           end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           redirect_to :back
         else
          flash[:notice] = "Comment was not created successfully."
@@ -56,8 +41,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id]).destroy
+    if current_user == Comment.find(params[:id]).user
+      comment = Comment.find(params[:id]).destroy
       redirect_to :back
+    else
+      flash[:notice] = "You are not authorized to delete that comment."
+      redirect_to :back
+    end
   end
 
   private

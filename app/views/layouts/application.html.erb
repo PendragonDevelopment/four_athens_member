@@ -20,7 +20,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= image_tag("/assets/fourathens.png", class: "navbar-brand brand-refine") %>
+        <%= link_to image_tag("/assets/fourathens.png", class: "navbar-brand brand-refine"), root_path %>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -34,7 +34,7 @@
             <%= link_to "Directory", directory_path, class: "navlink", "data-no-turbolink" => true %>
           </li>
           <li class="navlink <%='active' if params[:controller] == 'schedules'%>">
-            <%= link_to "Scheduling", schedules_index_path %>
+            <%= link_to "Schedules", schedules_index_path %>
           </li>          
           <li class="navlink"><%= link_to("FAQs", "#")%></li>
         </ul>

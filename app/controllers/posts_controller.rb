@@ -58,8 +58,13 @@ before_action :authenticate_user!
   end
 
   def destroy
-    post = Post.find(params[:id]).destroy
-    redirect_to root_path
+    if current_user == Post.find(params[:id]).user
+      post = Post.find(params[:id]).destroy
+      redirect_to :back
+    else
+      flash[:notice] = "You are not authorized to delete that post."
+      redirect_to :back
+    end
   end
 
   def hiring
