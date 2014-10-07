@@ -9,16 +9,6 @@ Rails.application.routes.draw do
 
   get 'schedules/test'
 
-  get 'comment/new'
-  get 'comment/delete'
-  get 'post/index'
-  get 'post/new'
-  get 'post/create'
-  get 'post/delete'
-  get 'user/index'
-  get 'user/new'
-  get 'user/edit'
-  get 'user/show'
 
   resources :posts do
     collection do
@@ -32,7 +22,6 @@ Rails.application.routes.draw do
   end
   resources :skills
   resources :profiles
-  resources :users
   resources :comments
 
 

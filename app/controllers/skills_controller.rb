@@ -1,4 +1,5 @@
 class SkillsController < ApplicationController
+before_action :authenticate_user!
 
   def index
   	@skills = Skill.order('id')
