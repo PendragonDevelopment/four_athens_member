@@ -17,3 +17,6 @@
 //= require data-confirm-modal
 //= require custom
 //= require jquery.atwho
+//= require bootstrap-datepicker
+//= require moment
+//= require bootstrap-datetimepicker

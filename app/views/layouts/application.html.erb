@@ -33,10 +33,32 @@
           <li class=" <%='active' if params[:controller] == 'profiles'%>">
             <%= link_to "Directory", directory_path, class: "navlink", "data-no-turbolink" => true %>
           </li>
+         
           <li class="navlink <%='active' if params[:controller] == 'schedules'%>">
             <%= link_to "Schedules", schedules_index_path %>
           </li>          
+         
           <li class="navlink"><%= link_to("FAQs", "#")%></li>
+          <% if current_user %>
+            <% if can? :manage, Sheet, :user_id => current_user.id%>
+              <li class="navlink <%='active' if params[:controller] == 'mentors'%>">
+                <%= link_to "Mentor", mentors_path %>
+              </li>          
+            <% end %>
+          <% end %>
+                 
+
+          <% if can? :update, User %>
+            <li class="navlink <%='active' if params[:controller] == 'admin'%>">
+              <%= link_to "Admin", admin_index_path %>
+            </li>          
+          <% end %>
+
+
+
+
+
+
         </ul>
   
 

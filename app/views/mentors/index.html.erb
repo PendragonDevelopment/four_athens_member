@@ -1,0 +1,97 @@
+<h1>Mentor</h1>
+<% picker_interater1 = 1 %>
+<% picker_interater2 = 10000 %>
+
+
+<p class="mentor-title">Create a Sheet</p>
+	<div class="input-append">
+		<div class="input-group">
+			<%= form_for :sheet,  method: :post do |f| %>
+  				<span class="mentor-description">Description: </span> <%= f.text_field :description, placeholder: "Technical advice, etc." %>
+	 			<span class="mentor-description">Date: </span> <%= f.text_field :date, placeholder: Time.now.strftime("%m/%d/%Y"), :data => {:provide => "datepicker"} %>
+                <%= f.submit "Create new sheet", class: "btn btn-default time-slot-submit" %>
+			<% end %>
+	 	</div>
+	</div>
+
+<br>
+
+<% if @sheets.present? %>
+	<p class="mentor-title">Current Sheets</p>
+        <% @sheets.each do |s| %>
+    		<p>
+                <span class="mentor-current-sheet">Sheet: </span> 
+                <span class="mentor-current-description"> <%= s.description %></span>
+                <span> on </span>   
+                <span class="mentor-current-description"><%= s.date %></span> <span> <%= link_to 'x', { :controller => 'mentors', :action => 'destroy', :id => s.id }, data: { confirm: "Click 'confirm' to delete this sheet." }, :method => :delete, class: "delete-content" %> </span>
+            </p>
+            <% sorted_slots = s.slots.sort_by { |obj| obj.start_time } %>
+    		<% sorted_slots.each do |sl| %>
+    			<span class="mentor-current-time"> <%= sl.start_time + " - " + sl.end_time  %> </span>
+                <span class="mentor-pipe">  | </span>
+    			<% if sl.user_id %>
+    				<span class="mentor-mentee-name"> <%= link_to sl.user.first_name + " " + sl.user.last_name, profile_path(sl.user.id) %> </span>
+                    <%= " is signed up for this time slot."%>
+                      <span class="delete-content"> <%= link_to 'x', { :controller => 'mentors', :action => 'destroy_slots', :id => sl.id }, data: { confirm: "Click 'confirm' to delete this slot. #{sl.user.first_name} #{sl.user.last_name} will be alerted that you have cancelled this slot." }, :method => :delete, class: "delete-content" %> </span>
+    			<% else %>
+    				<span class="mentor-slot-available"> Available </span>
+                    <span class="delete-content"> <%= link_to 'x', { :controller => 'mentors', :action => 'destroy_slots', :id => sl.id }, data: { confirm: "Click 'confirm' to delete this slot." }, :method => :delete, class: "delete-content" %> </span>
+    			<% end %>
+              
+
+    			<br>
+
+    		<% end %>
+                <%= form_for :slot, url: create_slots_mentors_path, method: :post do |f| %>
+                    <%= f.hidden_field :sheet_id, :value => s.id %>
+
+            <div class="container">
+                <div class="row">
+                    <div class='col-sm-4'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker<%= picker_interater1 %>'>
+                                <span class="input-group-addon">Start Time</span>
+                                <%= f.text_field :start_time,  class: "form-control" %>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                            
+                            <div class='input-group date' id='datetimepicker<%= picker_interater2 %>'>
+                                <span class="input-group-addon end-time">End Time  </span>
+                                <%= f.text_field :end_time,  class: "form-control" %>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                            <div class='input-group'>
+                                <%= f.submit "New Time Slot", class: "btn btn-default time-slot-submit" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker<%= picker_interater1 %>').datetimepicker({
+            pickDate: false,
+            minuteStepping:5
+        });
+    });
+    $(function () {
+        $('#datetimepicker<%= picker_interater2 %>').datetimepicker({
+            pickDate: false,
+            minuteStepping:5
+        });
+    });
+
+</script>
+<% picker_interater1 += 1 %>
+<% picker_interater2 += 1 %>
+
+        <% end %>
+
+    <% end %>
+
+<% end %>
+

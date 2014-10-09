@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+
+
+  get 'admin/index'
+
+  patch 'admin/update'
+
+  delete 'admin/destroy'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   get 'directory/', to: 'profiles#index'
 
@@ -8,6 +16,18 @@ Rails.application.routes.draw do
   get 'schedules/index'
 
   get 'schedules/test'
+
+  resources :mentors do
+    collection do
+      post :create_slots
+    end  
+    member do
+      delete :destroy_slots
+      patch :update_slots
+      patch :release_slots
+
+    end
+  end
 
 
   resources :posts do
@@ -20,6 +40,7 @@ Rails.application.routes.draw do
       get :event
     end
   end
+
   resources :skills
   resources :profiles
   resources :comments

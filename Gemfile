@@ -20,6 +20,10 @@ gem 'coffee-rails', '~> 4.0.1'
 gem 'coffee-script-source', '~>1.7.1'
 gem 'jquery-atwho-rails', '~> 0.5.1'
 gem 'socialization', '~> 1.1.0'
+gem 'cancancan', '~> 1.9.2'
+gem 'bootstrap-datepicker-rails', '~> 1.3.0.2'
+gem 'momentjs-rails', '>= 2.8.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

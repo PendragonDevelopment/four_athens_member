@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
+load_and_authorize_resource
 
   def index
     @comments = Comment.order("comments.created_at ASC")  
@@ -12,10 +13,12 @@ before_action :authenticate_user!
       a << i.join("_")
     end
     @username = a
+
   end
 
   def new
     @newpost = current_user.posts.build({:name => "default"})
+
   end
 
   def create
@@ -65,6 +68,7 @@ before_action :authenticate_user!
       flash[:notice] = "You are not authorized to delete that post."
       redirect_to :back
     end
+
   end
 
   def hiring

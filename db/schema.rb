@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930212943) do
+ActiveRecord::Schema.define(version: 20141009194747) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -72,6 +72,14 @@ ActiveRecord::Schema.define(version: 20140930212943) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "sheets", force: true do |t|
+    t.string   "date"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "skills", force: true do |t|
     t.string   "skill_name"
     t.datetime "created_at"
@@ -85,22 +93,32 @@ ActiveRecord::Schema.define(version: 20140930212943) do
 
   add_index "skills_users", ["skill_id", "user_id"], name: "index_skills_users_on_skill_id_and_user_id", using: :btree
 
+  create_table "slots", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "sheet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "start_time"
+    t.string   "end_time"
+  end
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "",       null: false
+    t.string   "encrypted_password",     default: "",       null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,        null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "role",                   default: "member"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

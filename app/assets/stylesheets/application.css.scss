@@ -15,7 +15,9 @@
  *= require test
  *= require custom
  *= require font-awesome
+ *= require bootstrap-datepicker3
 //=require jquery.atwho
 @import "bootstrap-sprockets"
 @import "bootstrap"
+@import 'bootstrap-datetimepicker';
  */

@@ -7,9 +7,7 @@
         <div class = "initial-post">
           <h3 class="title writer"> <%= link_to post.user.first_name + " " + post.user.last_name, profile_path(post.user.id)  %> <span class ="deleted">
           <% if user_signed_in? %>
-            <% if post.user_id.to_i == current_user.id  %>
-            <%= link_to "x", post, method: :delete, data: { confirm: "Click 'Confirm' to delete." } %>
-            <% end %>
+            <%= link_to "x", post, method: :delete, data: { confirm: "Click 'Confirm' to delete." } if can? :destroy, post %>
           <% end %>
    
           </span></h3>
@@ -39,11 +37,9 @@
 
                 <h3 class="writer title"><%= link_to comment.user.first_name + " " + comment.user.last_name, profile_path(comment.user.id)  %>
                   <% if user_signed_in? %>
-                    <% if comment.user_id == current_user.id %>
                       <span class ="deleted">
-                        <%= link_to "x", comment, method: :delete, data: { confirm: "Click 'Confirm' to delete." } %>
+                        <%= link_to "x", comment, method: :delete, data: { confirm: "Click 'Confirm' to delete." } if can? :destroy, comment %>
                       </span>
-                    <% end %>
                   <% end %>
 
                  </h3>

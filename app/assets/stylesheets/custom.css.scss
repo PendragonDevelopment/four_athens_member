@@ -396,3 +396,103 @@ margin-left: 20px;
   font-weight: 600;
   color: $four-athens-blue;
 }
+.schedules-name {
+  color: $four-athens-navy;
+  font-weight: 600;
+}
+.schedules-description {
+  color: $four-athens-blue;
+  font-weight: 600;
+}
+.schedules-datetime {
+  color: #999;
+}
+
+.schedules-release{
+  color: #c0392b;
+}
+
+.schedules-signup {
+  color: #27ae60;
+}
+
+//Admin
+.admin-div{
+  overflow:auto;
+}
+.admin-name{
+  margin: 5px;
+  width: 200px;
+  font-weight: 600;
+  clear: left;
+}
+
+//Mentor
+.end-time{
+  padding-right: 19px;
+  padding-left: 19px;
+}
+.time-slot-submit{
+  padding: 12px 12px;
+font-size: 14px;
+font-weight: normal;
+line-height: 1;
+color: #555555;
+text-align: center;
+background-color: #eeeeee;
+border: 1px solid #cccccc;
+border-radius: 4px;
+}
+.delete-content{
+  color: #c0392b;
+}
+.delete-content:hover {
+  color: #e74c3c;
+}
+
+.mentor-title{
+  color: $four-athens-navy;
+  font-weight: 600;
+  font-size: 1.5em;
+}
+.mentor-description{
+  color: $four-athens-blue;
+  font-weight: 600;
+}
+.mentor-current-sheet{
+  color: $four-athens-navy;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+.mentor-current-description{
+  color: $four-athens-blue;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.mentor-current-time{
+  color: $four-athens-blue;
+  font-weight: 600;
+  font-size: 1em;
+}
+.mentor-mentee-name {
+  color: $four-athens-navy;
+  font-weight: 600;
+  font-size: 1.1em;
+  line-height: 1.2em;
+}
+.mentor-mentee-name:hover {
+  color: $four-athens-blue;
+  font-weight: 600;
+  font-size: 1.1em;
+  text-decoration: underline; 
+  line-height: 1.2em;
+}
+.mentor-pipe {
+  color: #ccc;
+}
+
+.mentor-slot-available {
+  color: #27ae60;
+
+}

@@ -1,0 +1,16 @@
+<h1>Admin</h1>
+<% @users.each do |u| %>
+<div class="admin-div">	<p class="pull-left admin-name"> <%= u.first_name + " " + u.last_name + ":"%>  </p>
+
+			<%= form_for u, url: {action: "update"}, :html => {:class => "pull-left"} do |f| %>
+	 	   <%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
+     	 <%= f.hidden_field :id, :value => u.id %>
+
+      <%= f.submit "Update" %>
+
+		<% end %>
+  <%= button_to "Delete", { action: "destroy", id: u.id }, method: :delete, data: { confirm: "You are about to delete this user?" } %>
+</div>
+
+
+<% end %>
