@@ -31,7 +31,7 @@
 				<% @sheets.each do |s| %>
 					<p> <span class="schedules-name"> <%= s.user.first_name + " " + s.user.last_name + ": " %> </span>
 					<span class="schedules-description"> <%= s.description %>  </span> <br>
-					<span class="schedules-datetime">
+
 					<% formatted_date = Date.strptime(s.date, '%m/%d/%Y') %>
 					<%= formatted_date.strftime("%B %-d, %Y") %>
 					<% sorted_slots = s.slots.sort_by { |obj| obj.start_time } %>
@@ -39,7 +39,7 @@
     				<% sorted_slots.each do |sl| %>
 		    			<% if sl.user_id %>
 		    			<% else %>
-		    			  <%= sl.start_time + " - " + sl.end_time %> </span>
+		    			  <span class="schedules-datetime"> <%= sl.start_time + " - " + sl.end_time %> </span>
 		    			  <span class="schedules-signup">
 						  <%= link_to "<sign-up>", { :controller => 'mentors', :action => 'update_slots', :id => sl.id }, data: { confirm: "Click 'confirm' to sign-up for this slot." }, :method => :patch %>
 						  </span>
