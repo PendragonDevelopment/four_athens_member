@@ -16,19 +16,12 @@
 
           <p class="content"><%= simple_format(post.post_content) %></p>
           <p class="posted">posted <%= distance_of_time_in_words_to_now(post.created_at) + " ago." %>
-            <a class="show-reply reply">&lt;reply&gt;</a>
           </p>
 
-          <div class="input-append reply-form">
-      
-            <span class="input-group-btn">
-            <%= form_for(:comment, :url => {:controller => :comments, :action => 'create'}) do |f| %>
-            <%= f.hidden_field :post_id, :value => post.id %>
-            <%= f.text_area(:comment_content, rows:5, class: "reply-txtarea form-control form-validate") %>  
-            <%= f.submit(class: 'btn btn-default') %>
-            </span>
-            <% end %>     
-          </div> 
+
+
+
+
         </div>
         <div class="comments">
           <% @comments.each do |comment| %>
@@ -49,6 +42,16 @@
               <% end %>          
           <% end %>
         </div>
+
+        <div class="input-append reply-form"> 
+            <span class="input-group-btn">
+            <%= form_for(:comment, :url => {:controller => :comments, :action => 'create'}) do |f| %>
+            <%= f.hidden_field :post_id, :value => post.id %>
+            <%= f.text_area(:comment_content, rows:1, class: "reply-txtarea form-control form-validate") %>  
+            <%= f.submit(class: 'btn btn-default') %>
+            </span>
+            <% end %>     
+        </div> 
 	    </div>
     <% end %>
 

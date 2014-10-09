@@ -144,10 +144,16 @@ margin-left: 20px;
  
 }
 .reply-form {
-  display: none;
+//  display: none;
+
 }
 .post{
 
+}
+
+.reply-txtarea{
+  max-width: 590px;
+  float: left;
 }
 
 .posted {

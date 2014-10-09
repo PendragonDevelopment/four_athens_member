@@ -4,6 +4,11 @@
 $(document).ready(function() {
 
 	
+	$("textarea").keyup(function(e) {
+	    while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
+	        $(this).height($(this).height()+1);
+	    };
+	});
 
     //whiteboard form validation
 	$("form").submit(function() {
@@ -28,7 +33,7 @@ $(document).ready(function() {
 
 	//hide textareas
 	$("#hiddenTextareaDiv").hide();
-	$(".reply-form").hide();
+//	$(".reply-form").hide();
 
 	$(".alert-info").delay(4000).fadeOut("fast", "linear");
 
