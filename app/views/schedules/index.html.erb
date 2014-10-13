@@ -128,6 +128,7 @@
 				eventHTML += '<div class="event">';
 
 				//datetime
+				//event has a time
 				if (event.start.dateTime) {		
 					var d = new Date (event.start.dateTime);
 					var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -137,13 +138,15 @@
 					if ( hour > 12 ) {
 						revisedHour = hour - 12 ;
 						p = "pm"
-					} else if (hour = 12){
+					} else if ( hour == 12){
+						revisedHour = hour;
 						p = "pm"
 					}
 					else {
 						revisedHour = hour;
 						p = "am"
 					}
+
 					var min = d.getMinutes();
 					var revisedMin;
 					if (min < 10 ) {
@@ -152,7 +155,15 @@
 						revisedMin = min;
 					}
 
-					var eventDateTime = '<span class="event-datatime">|   ' + months[d.getMonth()] + ' ' + d.getDate() + ' @ ' + revisedHour + ':' + revisedMin + p +'</span>';
+					if ( hour == 12 && min == 0 ) {
+						revisedHourMinute = "Noon";
+					} else {
+					var revisedHourMinute = revisedHour + ':' + revisedMin + p;
+					}	
+
+					var eventDateTime = '<span class="event-datatime">|   ' + months[d.getMonth()] + ' ' + d.getDate() + ' @ ' + revisedHourMinute +'</span>';
+
+				//event has only a date
 				} else if (event.start.date) {
 					var d = new Date (event.start.date);
 					var d2 =  d.getDate()
