@@ -8,7 +8,7 @@ $main-color: #00a1dd;
 //$main-color: #7CC0CB;
 $secondary-color: #707070;
 $tertiary-color: #ccc;
-$four-athens-navy: #002143;
+$four-athens-navy: #53677F; // #003056  #002143
 $four-athens-blue: #00a1dd;
 $four-athens-sky: #9dccf0;
 
@@ -79,7 +79,7 @@ h2 {
 }
 
 p {
-    letter-spacing: -1px;
+    letter-spacing: -1.05px;
 
   font-size: 1.1em;
   line-height: 1em;
@@ -95,6 +95,7 @@ a {
 }
 
 
+// 0. Layout
 
 @media (max-width: 768px) {
   .navlink {
@@ -107,38 +108,12 @@ a {
   height: 50px;
   padding: 5px;
 }
-.comments-wrapper{
-  background-color: #f2f8ff;
-  border-top: 1px solid #d8d8d8;
 
 
-}
-.comments{
-  border-left: 6px solid #d8d8d8;
-  margin-left: 25px;
-}
+// 1. Whiteboard
 
-.comment {
-margin-left: 20px;
-
-}
-
-
-.title {
-  font-size: 1.4em;
-  color: $main-color;
-  margin-bottom: 10px;
-
-}
-
-
-.writer{
-}
-.content {
-  color: $secondary-color;
-  line-height: 1.1em;
-    margin-bottom: 10px;
-
+.post-container {
+margin-bottom: 40px;
 }
 
 .post{
@@ -146,14 +121,69 @@ margin-left: 20px;
   clear: both;
   border-top: 1px solid #d8d8d8;
 }
+.initial-post{
+  background-color: #f9f9f9;
+  padding: 5px 25px 5px 25px;
+  clear: both;
+}
 
-.post-container {
-margin-bottom: 40px;
+.title {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: $four-athens-navy;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+
+
+}
+
+.writer{
+
+}
+
+.deleted {
+  text-align: right;
+  float: right;
+  color: $four-athens-sky;
+}
+
+.content {
+  color: $four-athens-navy;
+  line-height: 1.1em;
+    margin-bottom: 10px;
+}
+
+.posted {
+  color: $tertiary-color;
+  line-height: 0.9em;
+  margin-bottom: 25px;
+  margin-top: 11px;
+}
+
+.comments-wrapper{
+  background-color: #f2f8ff;
+  border-top: 1px solid #d8d8d8;
+}
+
+.comments{
+  border-left: 6px solid #d8d8d8;
+  margin-left: 25px;
+}
+
+.comment {
+margin-left: 20px;
+margin-right: 20px;
+}
+
+.posted-comment {
+  color: $tertiary-color;
+  line-height: 0.9em;
+  margin-bottom: 30px;
+  margin-top: 11px;
 }
 
 
 .reply-form {
-//  display: none;
   border-top: 1px solid #d8d8d8;
   border-bottom: 1px solid #d8d8d8;
 
@@ -178,15 +208,15 @@ margin-bottom: 40px;
   width: calc(100% - 110px);
   background-color: transparent;
   overflow: hidden;
-  color: $four-athens-blue;
-
+  color: $four-athens-navy;
 }
 
 .reply-txtarea:focus{
   outline: 0;
 }
 .reply-focus{
-  outline: 2px solid $four-athens-sky;
+  border-top: 3px solid $four-athens-sky;
+  border-bottom: 3px solid $four-athens-sky;
 }
 
 .reply-submit{
@@ -198,23 +228,14 @@ margin-bottom: 40px;
  .reply-submit:focus{
   outline: 0;
 }
-
-
-.posted {
-  color: $tertiary-color;
-  line-height: 0.9em;
-  margin-bottom: 25px;
-  margin-top: 11px;
-
+ .reply-submit:hover{
+  color: $four-athens-navy;
 }
 
-.posted-comment {
-  color: $tertiary-color;
-  line-height: 0.9em;
-  margin-bottom: 30px;
-  margin-top: 11px;
 
-}
+
+
+
 
 .button{
   display: inline-block;
@@ -255,18 +276,11 @@ margin-bottom: 40px;
   margin: 30px;
 }
 
-.initial-post{
-  background-color: #f9f9f9;
-  padding: 5px 25px 5px 25px;
-  clear: both;
-}
 
-.deleted {
-  text-align: right;
-  float: right;
-  color: $four-athens-sky;
 
-}
+
+
+
 .comment-deleted{
   text-align: right;
   float: right;

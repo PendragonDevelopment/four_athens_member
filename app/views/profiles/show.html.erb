@@ -1,12 +1,11 @@
 <% user = @user %>
 	<div class="profile-entry">
-
-		<div class="profile-image-div">
+		
+    <div class="profile-image-div">
 			<%= image_tag user.profile.avatar.url(:medium), size: "125x125" %>
-
 		</div>
-
-		<div class="profile-text">
+	  
+    <div class="profile-text">
 			<h3 class="title"><%=user.first_name + " " + user.last_name  %></h3>
 			<% if !user.profile.position.blank? && !user.profile.company.blank? %>
 				<p><strong><%= user.profile.position + " @ " + user.profile.company  %></strong></p>
@@ -61,46 +60,51 @@
 
 	</div>
 
-<% if @posts.present? %>
-	<h2><%= user.first_name %>'s Posts</h2>
+  <% if @posts.present? %>
+  <h2>Recent Activity</h2>
 
   <% @posts.each do |post| %>
-      
-
-
-      <div class="post" >
-        <div class = "initial-post">
-          <h3 class="title writer"><%= post.user.first_name + " " + post.user.last_name %> <span class ="deleted">
-
-   
-          </span></h3>
-          
         
 
-          <p class="content"><%= simple_format(post.post_content) %></p>
-          <p class="posted">posted <%= distance_of_time_in_words_to_now(post.created_at) + " ago." %>
-          </p>
+  	<div class="post-container clearfix">
 
-          <div class="input-append reply-form">
-      
- 
-          </div> 
+          <div class="post" >
+    	        <div class = "initial-post">
+    	          <h3 class="title writer"><%= post.user.first_name + " " + post.user.last_name %> <span class ="deleted">
+
+    	   
+    	          </span></h3>
+    	          
+    	        
+
+    	           <%= simple_format(post.post_content, class: 'content') %>
+    	          <p class="posted">posted <%= distance_of_time_in_words_to_now(post.created_at) + " ago." %>
+    	          </p>
+
+
+    	        </div>
+    			  <% if post.comments.present? %>
+      				 <div class="comments-wrapper clearfix">
+
+      			        <div class="comments">
+      			          <% @comments.each do |comment| %>
+      			              <% if comment.post_id == post.id %>
+      			        	      <div class="comment">
+
+      			                <h3 class="writer title"><%= link_to_unless_current comment.user.first_name + " " + comment.user.last_name, profile_path(comment.user.id)  %>
+
+
+      			                 </h3>
+      			        	       <%= simple_format(comment.comment_content, class: 'content') %>
+      			        	       <p class="posted-comment">posted <%= distance_of_time_in_words_to_now(comment.created_at) + " ago." %></p>
+      			                </div>
+      			              <% end %>          
+      			          <% end %>
+      			        </div>
+      		        </div>
+    		    <% end %>
+    	    </div>
         </div>
-        <div class="comments">
-          <% @comments.each do |comment| %>
-              <% if comment.post_id == post.id %>
-        	      <div class="comment">
+      <% end %>
 
-                <h3 class="writer title"><%= link_to_unless_current comment.user.first_name + " " + comment.user.last_name, profile_path(comment.user.id)  %>
-
-
-                 </h3>
-        	       <p class="content"><%= simple_format(comment.comment_content) %></p>
-        	       <p class="posted-comment">posted <%= distance_of_time_in_words_to_now(comment.created_at) + " ago." %></p>
-                </div>
-              <% end %>          
-          <% end %>
-        </div>
-	    </div>
-    <% end %>
 <% end %>

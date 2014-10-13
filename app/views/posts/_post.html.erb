@@ -14,7 +14,7 @@
         
 
 
-        <p class="content"><%= simple_format(post.post_content) %></p>
+        <%= simple_format(post.post_content, class: 'content') %>
         <p class="posted">posted <%= distance_of_time_in_words_to_now(post.created_at) + " ago." %>
         </p>
 
@@ -35,7 +35,7 @@
                 <% end %>
 
                </h3>
-      	       <p class="content"><%= simple_format(comment.comment_content) %></p>
+      	       <%= simple_format(comment.comment_content, class: 'content') %>
       	       <p class="posted-comment">posted <%= distance_of_time_in_words_to_now(comment.created_at) + " ago." %></p>
               </div>
             <% end %>          
