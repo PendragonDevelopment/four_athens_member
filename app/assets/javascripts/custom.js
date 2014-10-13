@@ -3,12 +3,18 @@
 
 $(document).ready(function() {
 
-	
-	$("textarea").keyup(function(e) {
-	    while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
-	        $(this).height($(this).height()+1);
-	    };
+	$('textarea').autosize();
+
+	//custom textarea focus
+	$(".reply-txtarea").on("focus", function(){
+		parentToReplyTextarea = $(this).closest(".reply-form");
+		parentToReplyTextarea.addClass('reply-focus');
 	});
+	$(".reply-txtarea").on("blur", function(){
+		parentToReplyTextarea = $(this).closest(".reply-form");
+		parentToReplyTextarea.removeClass('reply-focus');
+	});
+
 
     //whiteboard form validation
 	$("form").submit(function() {

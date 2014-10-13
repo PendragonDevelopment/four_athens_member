@@ -20,3 +20,4 @@
 //= require bootstrap-datepicker
 //= require moment
 //= require bootstrap-datetimepicker
+//= require jquery.autosize
