@@ -137,7 +137,10 @@
 					if ( hour > 12 ) {
 						revisedHour = hour - 12 ;
 						p = "pm"
-					} else {
+					} else if (hour = 12){
+						p = "pm"
+					}
+					else {
 						revisedHour = hour;
 						p = "am"
 					}
