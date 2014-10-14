@@ -75,36 +75,72 @@ load_and_authorize_resource
     @posts = Post.where({ hiring: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Hiring"
+    user_name = User.pluck(:first_name, :last_name)
+    a = []
+    user_name.each do |i|
+      a << i.join("_")
+    end
+    @username = a
   end
 
   def promote
     @posts = Post.where({ promote: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Promote"
+    user_name = User.pluck(:first_name, :last_name)
+    a = []
+    user_name.each do |i|
+      a << i.join("_")
+    end
+    @username = a
   end
 
   def launch
     @posts = Post.where({ launch: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Launch"
+    user_name = User.pluck(:first_name, :last_name)
+    a = []
+    user_name.each do |i|
+      a << i.join("_")
+    end
+    @username = a
   end
 
   def tools
     @posts = Post.where({ tools: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Tools"
+    user_name = User.pluck(:first_name, :last_name)
+    a = []
+    user_name.each do |i|
+      a << i.join("_")
+    end
+    @username = a
   end
   
   def request_thing
     @posts = Post.where({ request: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Requests"
+    user_name = User.pluck(:first_name, :last_name)
+    a = []
+    user_name.each do |i|
+      a << i.join("_")
+    end
+    @username = a
   end
   
   def event
     @posts = Post.where({ event: 1}).order("posts.created_at DESC").page(params[:page]).per_page(10)
     @comments = Comment.order("comments.created_at ASC")
     @page = "Events"
+    user_name = User.pluck(:first_name, :last_name)
+    a = []
+    user_name.each do |i|
+      a << i.join("_")
+    end
+    @username = a
   end
 
 
