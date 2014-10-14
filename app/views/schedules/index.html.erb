@@ -1,39 +1,29 @@
 <div class="container-fluid">
 	<div class="row">
 		
-		<div class="col-lg-9" id="div-events">
-			<h1>Events</h1>
+		<div class="col-md-12" id="div-events">
+			<h1 class="schedule-title">Events</h1>
 			<div id="events"></div>
 		</div>
 		
-		<div class="col-lg-3"> 
-			<h1>My Slots</h1>
-				<% @slots.each do |sl| %>
-					<p>
-					<span class="schedules-name"> <%= sl.sheet.user.first_name + " " + sl.sheet.user.last_name %></span> <br>
-					<span class="schedules-description"> <%= sl.sheet.description %> </span> <br>
-					<span class="schedules-datetime"> <% formatted_date = Date.strptime(sl.sheet.date, '%m/%d/%Y') %> 
-					<%= formatted_date.strftime("%B %-d, %Y") %> <br>
-					<%= sl.start_time + " - " + sl.end_time %> <br> </span>
-					<span class="schedules-release">
-					<%= link_to "<release sign-up>", { :controller => 'mentors', :action => 'release_slots', :id => sl.id }, data: { confirm: "Click 'confirm' to release this slot." }, :method => :patch %>
-					</span>
-					</p>
-				<% end %>
-		</div>
+
 
 
 	</div>
 	<div class="row">
 		
-		<div class="col-lg-6" id="div-events">
-			<h1>Mentor Slots</h1>
+		<div class="col-md-6" id="div-events">
+			<h1 class="schedule-title">Mentor Slots</h1>
 				<% @sheets.each do |s| %>
-					<p> <span class="schedules-name"> <%= s.user.first_name + " " + s.user.last_name + ": " %> </span>
+
+
+					<p> <span class="schedules-name"> <%= link_to s.user.first_name + " " + s.user.last_name, profile_path(s.user.id) %> 
+ </span> <br>
 					<span class="schedules-description"> <%= s.description %>  </span> <br>
 
 					<% formatted_date = Date.strptime(s.date, '%m/%d/%Y') %>
-					<%= formatted_date.strftime("%B %-d, %Y") %>
+					<span class="schedules-datetime"> <%= formatted_date.strftime("%B %-d, %Y") %> </span>
+
 					<% sorted_slots = s.slots.sort_by { |obj| obj.start_time } %>
     				<br>
     				<% sorted_slots.each do |sl| %>
@@ -59,10 +49,21 @@
 
 		</div>
 		
-		<div class="col-lg-6"> 
-			<h1>Room Reservation</h1>
+		<div class="col-md-6"> 
+			<h1 class="schedule-title">My Slots</h1>
+				<% @slots.each do |sl| %>
+					<p>					
+					<span class="schedules-name"><%= link_to sl.sheet.user.first_name + " " + sl.sheet.user.last_name, profile_path(sl.sheet.user.id) %> </span> <br>
+					<span class="schedules-description"> <%= sl.sheet.description %> </span> <br>
+					<span class="schedules-datetime"> <% formatted_date = Date.strptime(sl.sheet.date, '%m/%d/%Y') %> 
+					<%= formatted_date.strftime("%B %-d, %Y") %> <br>
+					<%= sl.start_time + " - " + sl.end_time %> <br> </span>
+					<span class="schedules-release">
+					<%= link_to "<release sign-up>", { :controller => 'mentors', :action => 'release_slots', :id => sl.id }, data: { confirm: "Click 'confirm' to release this slot." }, :method => :patch %>
+					</span>
+					</p>
+				<% end %>
 		</div>
-
 
 	</div>
 </div>

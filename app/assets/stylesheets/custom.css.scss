@@ -112,6 +112,20 @@ a {
 
 // 1. Whiteboard
 
+.newPostTextArea:focus{
+  outline: 0;
+  box-shadow: 0 0 1px 1px rgba(83, 103, 127, 0.250);
+
+}
+
+.btn{
+  border-radius: 0;
+}
+
+.btn.active{
+  box-shadow: 0 0 2px 2px #53677f;
+}
+
 .post-container {
 margin-bottom: 40px;
 }
@@ -433,7 +447,47 @@ margin-right: 20px;
   display: none;
 }
 
+
+// Update Profile
+.profile-update-title {
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: $four-athens-navy;
+}
+
+.skills-title {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: $four-athens-navy;
+}
+.skill-group{
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+.skill-button{
+  margin: 5px 10px 5px 10px ;
+}
+
+.profile-submit{
+  padding: 10px 30px 10px 30px;
+  margin-top: 40px;
+  margin-left: 20px;
+  font-weight: 600;
+  font-size: 1.2em;
+  color: $four-athens-navy;
+
+}
+
+
 // Scedules
+.schedule-title {
+  text-align: left;
+  text-decoration: underline;
+  font-size: 2em;
+}
+
 .event {
   margin-bottom: 15px;
 }

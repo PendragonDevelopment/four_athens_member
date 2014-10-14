@@ -1,6 +1,6 @@
 <h1>Mentor</h1>
-<% picker_interater1 = 1 %>
-<% picker_interater2 = 10000 %>
+<% picker_iterator1 = 1 %>
+<% picker_iterator2 = 10000 %>
 
 
 <p class="mentor-title">Create a Sheet</p>
@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class='col-sm-4'>
                         <div class="form-group">
-                            <div class='input-group date' id='datetimepicker<%= picker_interater1 %>'>
+                            <div class='input-group date' id='datetimepicker<%= picker_iterator1 %>'>
                                 <span class="input-group-addon">Start Time</span>
                                 <%= f.text_field :start_time,  class: "form-control" %>
                                 <span class="input-group-addon">
@@ -57,7 +57,7 @@
                                 </span>
                             </div>
                             
-                            <div class='input-group date' id='datetimepicker<%= picker_interater2 %>'>
+                            <div class='input-group date' id='datetimepicker<%= picker_iterator2 %>'>
                                 <span class="input-group-addon end-time">End Time  </span>
                                 <%= f.text_field :end_time,  class: "form-control" %>
                                 <span class="input-group-addon">
@@ -73,21 +73,21 @@
             </div>
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker<%= picker_interater1 %>').datetimepicker({
+        $('#datetimepicker<%= picker_iterator1 %>').datetimepicker({
             pickDate: false,
             minuteStepping:5
         });
     });
     $(function () {
-        $('#datetimepicker<%= picker_interater2 %>').datetimepicker({
+        $('#datetimepicker<%= picker_iterator2 %>').datetimepicker({
             pickDate: false,
             minuteStepping:5
         });
     });
 
 </script>
-<% picker_interater1 += 1 %>
-<% picker_interater2 += 1 %>
+<% picker_iterator1 += 1 %>
+<% picker_iterator2 += 1 %>
 
         <% end %>
 

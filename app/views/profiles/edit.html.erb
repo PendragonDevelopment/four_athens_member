@@ -1,5 +1,5 @@
 
-<h1>update profile</h1>
+<h1 class="profile-update-title">update profile</h1>
 
 <%= form_for @profile, :url => {:action => 'update'}, :html => { :multipart => true, :role => "form", class: "form-horizontal"  } do |form| %>
   	<div class="form-group">
@@ -69,15 +69,36 @@
 			<%= form.text_field :codepen, class: "form-control", placeholder: "http://codepen.io/yourname/"%>
 		</div>
 	</div> 
-	<%= hidden_field_tag "user[skill_ids][]", nil %>
-	<% Skill.all.each do |skill| %>
-		<%= check_box_tag "user[skill_ids][]", skill.id, current_user.skill_ids.include?(skill.id), id: dom_id(skill) %>
-		<%= label_tag dom_id(skill), skill.skill_name %><br>
-	<% end %>
 
+	<h2 class="skills-title">skills</h2>
+
+
+
+
+
+	<div class="input-group-btn skill-group">
+		<div class="btn-group" data-toggle="buttons">
+			<%= hidden_field_tag "user[skill_ids][]", nil %>
+
+
+			<% Skill.all.each do |skill| %>
+			<% if skill.user_ids.include?current_user.id %>
+				<% skill_class = "active" %>
+			<% else %>
+				<% skill_class = ""  %>
+			<% end %>
+			   <label class="btn btn-default skill-button <%= skill_class %>"><%= skill.skill_name %>
+				<%= check_box_tag "user[skill_ids][]", skill.id, current_user.skill_ids.include?(skill.id), id: dom_id(skill) %>
+              </label>
+
+				
+
+			<% end %>
+		</div>
+	</div>
 
 	  	<div class="form-group">
- 		<%= form.submit %>
+ 		<%= form.submit "Update Profile", class: "btn btn-default profile-submit" %>
   	</div>
 
 <% end %>

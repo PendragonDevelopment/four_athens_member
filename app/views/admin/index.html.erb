@@ -1,6 +1,6 @@
 <h1>Admin</h1>
 <% @users.each do |u| %>
-<div class="admin-div">	<p class="pull-left admin-name"> <%= u.first_name + " " + u.last_name + ":"%>  </p>
+<div class="admin-div">	<p class="pull-left admin-name"><%= link_to u.first_name + " " + u.last_name, profile_path(u.id)  %> </p>
 
 			<%= form_for u, url: {action: "update"}, :html => {:class => "pull-left"} do |f| %>
 	 	   <%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
