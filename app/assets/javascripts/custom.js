@@ -3,6 +3,15 @@
 
 $(document).ready(function() {
 
+	$('#skills').sortable({ 
+		axis: "y",
+		update: function(event,ui) {
+		  $.post($(this).data('update-url'), $(this).sortable('serialize') );
+
+		}
+	});
+
+
 	$('textarea').autosize();
 
 	//custom textarea focus

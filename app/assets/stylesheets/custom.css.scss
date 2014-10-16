@@ -147,8 +147,6 @@ margin-bottom: 40px;
   color: $four-athens-navy;
   margin-bottom: 10px;
   letter-spacing: -2px;
-
-
 }
 
 .writer{
@@ -539,11 +537,29 @@ margin-right: 20px;
 .admin-div{
   overflow:auto;
 }
+.admin-article {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: $four-athens-navy;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+}
+.admin-section {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: $four-athens-navy;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+}
 .admin-name{
   margin: 5px;
   width: 200px;
   font-weight: 600;
   clear: left;
+}
+
+.handle{
+  cursor: move;
 }
 
 //Mentor

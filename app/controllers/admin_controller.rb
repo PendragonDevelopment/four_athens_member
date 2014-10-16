@@ -1,25 +1,27 @@
 class AdminController < ApplicationController
 
   def index
-  	@users = User.all
+  	@users = User.order('last_name')
   	authorize! :read, User
+    @skills = Skill.order('position')
+    @skill = Skill.new
+
   end
 
   def update
   	@user = User.find(params[:user][:id])
   	
     if @user.update_attributes(user_params)
-  		  @users = User.all
+  		  @users = User.order('last_name')
   		  authorize! :read, User
         redirect_to admin_index_path
     else
       flash[:alert] = "User was not updated successfully."
-      @users = User.all
+      @users = User.order('last_name')
       authorize! :read, User
       redirect_to admin_index_path
     end
   end
-
 
  
   def destroy
@@ -32,7 +34,6 @@ class AdminController < ApplicationController
       redirect_to :back
     end
   end
-
 
 
 

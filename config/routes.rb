@@ -41,7 +41,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :skills
+  resources :skills do
+    collection { post :sort }
+  end
+  
   resources :profiles
   resources :comments
 

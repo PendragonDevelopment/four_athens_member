@@ -4,7 +4,7 @@ before_action :authenticate_user!
 
   def index
   	@users = User.order('last_name') 
-  	@skills = Skill.order('id')
+  	@skills = Skill.order("position")
   end
 
   def show
@@ -17,7 +17,7 @@ before_action :authenticate_user!
 
   def edit
   	 @profile = current_user.profile
-     @skills = Skill.order('id')
+     @skills = Skill.order('position')
   end
 
   def update

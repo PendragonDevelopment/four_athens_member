@@ -53,7 +53,9 @@
 		
 		<div class="profile-label-div">
 			<ul class="profile-ul">
-				<% user.skills.each do |skill| %>
+				<% sorted_skills = user.skills.sort_by { |s| s.position} %>
+				
+				<% sorted_skills.each do |skill| %>
 					<li class="profile-label"><span class="label label-default2"><%= link_to skill.skill_name, skill_path(skill.id) %></span></li>
 
 				<% end %>

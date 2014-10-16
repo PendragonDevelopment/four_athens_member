@@ -81,7 +81,7 @@
 			<%= hidden_field_tag "user[skill_ids][]", nil %>
 
 
-			<% Skill.all.each do |skill| %>
+			<% @skills.each do |skill| %>
 			<% if skill.user_ids.include?current_user.id %>
 				<% skill_class = "active" %>
 			<% else %>
@@ -90,8 +90,6 @@
 			   <label class="btn btn-default skill-button <%= skill_class %>"><%= skill.skill_name %>
 				<%= check_box_tag "user[skill_ids][]", skill.id, current_user.skill_ids.include?(skill.id), id: dom_id(skill) %>
               </label>
-
-				
 
 			<% end %>
 		</div>
