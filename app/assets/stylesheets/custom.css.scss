@@ -94,6 +94,9 @@ a {
   }
 }
 
+ul {
+  list-style-type: none
+}
 
 // 0. Layout
 
@@ -560,7 +563,13 @@ margin-right: 20px;
 
 .handle{
   cursor: move;
+  line-height: 1.8;
 }
+
+#skills{
+  padding: 10px;
+}
+
 
 //Mentor
 .end-time{
