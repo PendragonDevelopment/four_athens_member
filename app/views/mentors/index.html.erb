@@ -3,7 +3,7 @@
 <% picker_iterator2 = 10000 %>
 
 
-<p class="mentor-title">Create a Sheet</p>
+<p class="mentor-title">Create an Appointment Sheet</p>
 	<div class="input-append">
 		<div class="input-group">
 			<%= form_for :sheet,  method: :post do |f| %>
@@ -17,7 +17,7 @@
 <br>
 
 <% if @sheets.present? %>
-	<p class="mentor-title">Current Sheets</p>
+	<p class="mentor-title">Add Sign-up Time Slots</p>
         <% @sheets.each do |s| %>
     		<p>
                 <span class="mentor-current-sheet">Sheet: </span> 
