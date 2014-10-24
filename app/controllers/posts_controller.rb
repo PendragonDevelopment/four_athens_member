@@ -36,7 +36,10 @@ load_and_authorize_resource
       arr = @newpost.post_content.split(" ")
       arr2 = []
       arr.each do |word|
-        if word.include? "http://" || "https://"
+        if word.include? "http://" 
+          a_tag = "<span class='link'><a href= '#{word}' >#{word}</a></span>"
+          word = a_tag
+        elsif word.include? "https://"
           a_tag = "<span class='link'><a href= '#{word}' >#{word}</a></span>"
           word = a_tag
         end
