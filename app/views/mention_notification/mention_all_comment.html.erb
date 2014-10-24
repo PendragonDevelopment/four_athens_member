@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Hello!</h1>
+    <p>
+      You were mentioned in a comment.<br>
+    </h2>
+    <h3>
+      <%= @mentioner.first_name + " " + @mentioner.last_name + ": " %>
+    </h3>
+    <p>
+      <%= @mention.comment_content %>
+    </p>
+    <p>
+      To view the WhiteBoard, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>

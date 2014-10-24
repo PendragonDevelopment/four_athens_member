@@ -38,6 +38,17 @@ class CommentsController < ApplicationController
               MentionNotification.mention_comment(v, @newcomment).deliver 
             end
           end
+
+          if @newcomment.comment_content.include? "@everyone"
+            if @newcomment.user.role == "admin"
+              MentionNotification.mention_all_comment(@newcomment, @newcomment.user).deliver
+            else
+              flash[:notice] = "FYI, @everyone email notifications are generated only by Administator comments."
+            end
+          elsif @newcomment.comment_content.include? "@thread"
+                MentionNotification.mention_thread(@newcomment, @newcomment.user).deliver
+          end
+          
           redirect_to :back
         else
          flash[:notice] = "Comment was not created successfully."
