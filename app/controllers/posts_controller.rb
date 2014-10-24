@@ -22,16 +22,32 @@ load_and_authorize_resource
   end
 
   def create
+
+#creates an array with a list of users, @user_name
       u = User.all
       h = {}
       u.each do |i|
         h["@" + i.first_name + "_" + i.last_name] = i.id
       end
 
-      @newpost = current_user.posts.build(post_params)
-        
+      @newpost = current_user.posts.new(post_params)
+
+#adds <a>for http and https
+      arr = @newpost.post_content.split(" ")
+      arr2 = []
+      arr.each do |word|
+        if word.include? "http://" || "https://"
+          a_tag = "<span class='link'><a href= '#{word}' >#{word}</a></span>"
+          word = a_tag
+        end
+        arr2 << word
+      end
+      string = arr2.join(" ")
+      @newpost.post_content = string
+
+
       unless @newpost.post_content == ""
-      	if @newpost.save(post_params)
+      	if @newpost.save
           h.each do |k,v|
             if @newpost.post_content.include? k
               @newpost.mention!(User.find_by_id(v))

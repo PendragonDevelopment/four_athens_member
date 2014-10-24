@@ -101,6 +101,11 @@ ul {
 
 // 0. Layout
 
+
+.link{
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .navlink {
     text-align: center;

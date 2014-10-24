@@ -12,10 +12,23 @@ class CommentsController < ApplicationController
         h["@" + i.first_name + "_" + i.last_name] = i.id
       end
 
-      @newcomment = current_user.comments.build(comment_params)
+      @newcomment = current_user.comments.new(comment_params)
+
+      #adds <a>for http and https
+      arr = @newcomment.comment_content.split(" ")
+      arr2 = []
+      arr.each do |word|
+        if word.include? "http://" || "https://"
+          a_tag = "<span class='link'><a href= '#{word}' >#{word}</a></span>"
+          word = a_tag
+        end
+        arr2 << word
+      end
+      string = arr2.join(" ")
+      @newcomment.comment_content = string
 
       unless @newcomment.comment_content == ""
-      	if @newcomment.save(comment_params)
+      	if @newcomment.save
           h.each do |k,v|
             if @newcomment.comment_content.include? k
               @newcomment.mention!(User.find_by_id(v))
