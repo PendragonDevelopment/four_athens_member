@@ -23,4 +23,10 @@ class User < ActiveRecord::Base
   	self.profile.save
   end
 
+  def self.check_stripe_for_email(email)
+    stripe_customers = Stripe::Customer.all
+    emails = stripe_customers[:data].collect { |customer| customer[:email] }
+    emails.include?(email)
+  end
+
 end
