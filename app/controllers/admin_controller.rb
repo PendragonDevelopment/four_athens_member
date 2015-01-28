@@ -10,11 +10,11 @@ class AdminController < ApplicationController
 
   def update
   	@user = User.find(params[:user][:id])
-  	
+
     if @user.update_attributes(user_params)
-  		  @users = User.order('last_name')
-  		  authorize! :read, User
-        redirect_to admin_index_path
+      @users = User.order('last_name')
+      authorize! :read, User
+      redirect_to admin_index_path
     else
       flash[:alert] = "User was not updated successfully."
       @users = User.order('last_name')
@@ -23,7 +23,7 @@ class AdminController < ApplicationController
     end
   end
 
- 
+
   def destroy
     if
       user = User.find(params[:id]).destroy
@@ -41,7 +41,7 @@ class AdminController < ApplicationController
 	    def user_params
 	      params.require(:user).permit(:id, :role)
 	    end
-	
+
 
 end
 

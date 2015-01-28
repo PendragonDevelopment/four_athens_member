@@ -1,9 +1,6 @@
-
-
-
 $(document).ready(function() {
 
-	$('#skills').sortable({ 
+	$('#skills').sortable({
 		axis: "y",
 		update: function(event,ui) {
 		  $.post($(this).data('update-url'), $(this).sortable('serialize') );
@@ -54,8 +51,8 @@ $(document).ready(function() {
 
 
 	$("#newpost").on("click", function() {
- 		$("#hiddenTextareaDiv").fadeToggle("fast", "linear");
- 		$(".newPostTextArea").focus();
+		$("#hiddenTextareaDiv").fadeToggle("fast", "linear");
+		$(".newPostTextArea").focus();
 	});
 
 	$(".show-reply").on("click", function(event) {
@@ -67,9 +64,8 @@ $(document).ready(function() {
 		replyTextarea.focus();
 	});
 
-	
+
 
 });
 
 
-	

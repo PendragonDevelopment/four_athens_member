@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.1.9'
 gem 'mysql2'
 gem 'paperclip', '~> 4.2.0'
 gem 'devise', '~> 3.3.0'
@@ -11,7 +11,7 @@ gem 'thin'
 gem 'will_paginate', '~> 3.0.7'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 gem 'font-awesome-sass'
-gem 'bootstrap-sass', '~> 3.2.0' 
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sprockets', '2.11.0'
 gem 'autoprefixer-rails'
 gem 'sass-rails', '~> 4.0.3'
@@ -48,10 +48,19 @@ gem 'spring',        group: :development
 # gem 'unicorn'
 
 # Use Capistrano for deployment
- gem 'capistrano-rails'
- gem 'capistrano', '~> 3.2.0'
- gem 'capistrano-bundler'
- gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano-rails'
+gem 'capistrano', '~> 3.2.0'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'hub', require: nil
+  gem 'rails_layout'
+  gem 'meta_request'
+  gem 'git-up'
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
