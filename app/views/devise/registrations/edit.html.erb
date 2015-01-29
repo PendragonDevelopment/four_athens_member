@@ -18,8 +18,6 @@
 
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, :html => {:autocomplete => "off"} %></div>
-   <%= f.file_field :avatar %>
-
 
   <div><%= f.submit "Update" %></div>
 <% end %>
