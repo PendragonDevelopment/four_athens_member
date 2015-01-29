@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :slots #don't destroy but definitely will remove the id from the slot
   has_and_belongs_to_many :skills
   has_one :profile, dependent: :destroy
+  has_one :subscription, dependent: :destroy
 
     ROLES = %i[member mentor admin locked]
 

@@ -3,11 +3,14 @@ before_action :authenticate_user!
 
 
   def index
+    authorize! :read, Profile
   	@users = User.order('last_name') 
   	@skills = Skill.order("position")
   end
 
   def show
+
+    authorize! :read, Profile
     @user = User.find(params[:id])
     @skills = Skill.order('id')
     @posts = Post.where({ user_id: params[:id]}).order("posts.created_at DESC")
@@ -16,15 +19,15 @@ before_action :authenticate_user!
 
 
   def edit
-  	 @profile = current_user.profile
-     @skills = Skill.order('position')
+    @profile = current_user.profile
+    authorize! :manage, @profile
+    @skills = Skill.order('position')
   end
 
   def update
-  	  @profile = current_user.profile.update(profile_params)
-  
-
-
+      @profile = current_user.profile  
+      authorize! :manage, @profile
+  	  @profile.update(profile_params)
       skill_array = params[:user][:skill_ids].to_a
       skill_array.each_with_index do |s, i|
         skill_array[i] = s.to_i unless skill_array[i].blank?

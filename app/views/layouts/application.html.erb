@@ -4,7 +4,9 @@
   <title>Four Athens Whiteboard</title>
   <%= favicon_link_tag (source='favicon.ico') %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://js.stripe.com/v2/", "application", 'data-turbolinks-track' => true  %>  
+  <%= javascript_tag "Stripe.publishableKey = '#{STRIPE_PUBLIC_KEY}';" %>
+
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,8 +84,6 @@
               </ul>       
             </li >           
           <% else %>
-              <li><a class="navlink" data-toggle="modal" data-target="#SignInModal">Sign In</a></li>
-              <li><a class="navlink" data-toggle="modal" data-target="#SignUpModal">Sign Up</a></li>
           <% end %>  
 
 
@@ -95,37 +95,7 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="SignInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-      </div>
-      <div class="modal-body">
-        <%= render "devise/sessions/new"  %>
-      </div>
-   
-    </div>
-  </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
-      </div>
-      <div class="modal-body">
-        <%= render "devise/registrations/new"  %>
-      </div>
-   
-    </div>
-  </div>
-</div>
 
 
 

@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to edit_user_registration_path, :alert => "You do not have the authorization to access that page. Please ensure that your subscription is up-to-date and that you have been given access to that page."
+  end
 
 
   protected

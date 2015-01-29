@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount StripeEvent::Engine => '/stripe'
+  
   devise_for :users, :controllers => { registrations: 'registrations' }
   get 'directory/', to: 'profiles#index'
 
@@ -12,6 +14,13 @@ Rails.application.routes.draw do
   get 'schedules/index'
 
   get 'schedules/test'
+
+  resources :subscriptions do
+    member do
+      patch :update_card
+    end
+  end
+
 
   resources :mentors do
     collection do

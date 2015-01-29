@@ -26,6 +26,9 @@ gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 gem 'autosize-rails', '~> 1.18.8'
 gem 'jquery-ui-rails', '~> 5.0.1'
+gem 'stripe', '~> 1.16.0'
+gem 'stripe_event', '~> 1.4.0'
+
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
@@ -55,4 +58,9 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development, :test do
+	gem 'rspec-rails', '~> 3.1.0'
+end
+
 ruby "2.1.2"

@@ -1,13 +1,18 @@
 class MentorsController < ApplicationController
 
+
+
   def index
   	@sheets = Sheet.where(user_id: current_user).order("sheets.date ASC")
   	@sheet = Sheet.new
+    authorize! :create, @sheet
+
   end
 
   def create
   	@newsheet = current_user.sheets.build(sheet_params)
-        
+        authorize! :create, @newsheet
+
       	if @newsheet.save(sheet_params)
           redirect_to :back
 
@@ -20,14 +25,14 @@ class MentorsController < ApplicationController
 
   end
 
-  def update
-  end
+
 
   def destroy
+    sheet = Sheet.find(params[:id])
+    authorize! :destroy, sheet
   	if
-      sheet = Sheet.find(params[:id]).destroy
+      sheet.destroy
       redirect_to :back
-     	authorize! :destroy, sheet
     else
       flash[:notice] = "The sheet could not be deleted."
       redirect_to :back
@@ -35,6 +40,8 @@ class MentorsController < ApplicationController
   end
 
   def create_slots
+    authorize! :create, Slot
+
   	@newslot = Slot.create(slot_params)
         
       	if @newslot.save(slot_params)
@@ -50,7 +57,7 @@ class MentorsController < ApplicationController
     if
       slot = Slot.find(params[:id]).destroy
       redirect_to :back
-     	authorize! :destroy, slot
+     	authorize! :destroy, Slot
     else
       flash[:notice] = "The slot could not be deleted."
       redirect_to :back
@@ -59,7 +66,9 @@ class MentorsController < ApplicationController
 
   def update_slots
     if
-      slot = Slot.find(params[:id]).update_attributes(:user_id => current_user.id)
+      slot = Slot.find(params[:id])
+      authorize! :update, slot
+      slot.update_attributes(:user_id => current_user.id)
       redirect_to :back
     else
       flash[:notice] = "The slot could not be updated."
@@ -69,7 +78,9 @@ class MentorsController < ApplicationController
 
   def release_slots
     if
-      slot = Slot.find(params[:id]).update_attributes(:user_id => nil)
+      slot = Slot.find(params[:id]).
+      authorize! :update, slot
+      slot.update_attributes(:user_id => nil)
       redirect_to :back
     else
       flash[:notice] = "The slot could not be released."
