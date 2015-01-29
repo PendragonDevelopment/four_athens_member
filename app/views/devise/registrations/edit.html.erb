@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h3>Edit <%= resource_name.to_s.humanize %></h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -22,8 +22,77 @@
   <div><%= f.submit "Update" %></div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<p>Card Information</p>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<% if current_user.subscription %>
+      <p><%= "Current Card" %> <br>
+      <%= "#{@brand}: **** **** ***** #{@last4}"%> <br>
+      <%= "Expiration: #{@exp_month}/#{@exp_year}" %></p>
+
+    <%= form_tag(update_card_subscription_path(current_user.subscription.id), method: "patch", class: "payment-form") do %>
+            <span class="payment-errors"></span>
+
+
+            <div class="form-group">
+              <%= label_tag :card_number, "Credit Card Number" %>
+              <%= text_field_tag :card_number, nil, name: nil, :data => {:stripe => 'number'}, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+              <%= text_field_tag :card_code, nil, name: nil, :data => {:stripe => 'cvc'}, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= label_tag :card_month, "Card Expiration" %> <br>
+              <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :data => {:stripe => 'exp-month'}, class: "form-control"} %>
+              <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",:data => {:stripe => 'exp-year'}, class: "form-control"} %>
+            </div>
+            <div id="stripe_error">
+            <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+          </div>
+
+
+
+      <%= submit_tag("Update Payment Method") %>
+
+    <% end %>
+<% else %>
+    <%= form_tag(subscriptions_path, class: "payment-form") do %>
+            <span class="payment-errors"></span>
+
+
+            <div class="form-group">
+              <%= label_tag :card_number, "Credit Card Number" %>
+              <%= text_field_tag :card_number, nil, name: nil, :data => {:stripe => 'number'}, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+              <%= text_field_tag :card_code, nil, name: nil, :data => {:stripe => 'cvc'}, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= label_tag :card_month, "Card Expiration" %> <br>
+              <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :data => {:stripe => 'exp-month'}, class: "form-control"} %>
+              <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",:data => {:stripe => 'exp-year'}, class: "form-control"} %>
+            </div>
+
+          <div id="stripe_error">
+            <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+          </div>
+
+
+
+      <%= submit_tag("Reactivate Membership") %>
+
+    <% end %>
+<% end %>
+
+
+
+
+
+<h3>Delete my account</h3>
+
+<p><%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Deleting an account cannot be undone. Click 'Confirm' to delete your account" }, method: :delete %></p>
+
+
+

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last_4_digits: MyString
+  stripe_id: MyString
+  user_id: 
+
+two:
+  last_4_digits: MyString
+  stripe_id: MyString
+  user_id: 

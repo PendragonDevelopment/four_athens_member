@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
 
   def new
-    @newcomment = current_user.comments.build({:name => "default"})
+    @newcomment = Comment.new
   end
 
   def create
@@ -13,8 +13,10 @@ class CommentsController < ApplicationController
       end
 
       @newcomment = current_user.comments.new(comment_params)
+      authorize! :create, @newcomment
 
-      #adds <a>for http and https
+
+#adds <a>for http and https
       arr = @newcomment.comment_content.split(" ")
       arr2 = []
       arr.each do |word|
@@ -30,14 +32,17 @@ class CommentsController < ApplicationController
       string = arr2.join(" ")
       @newcomment.comment_content = string
 
+
       unless @newcomment.comment_content == ""
       	if @newcomment.save
+# @user mention
           h.each do |k,v|
             if @newcomment.comment_content.include? k
               @newcomment.mention!(User.find_by_id(v))
               MentionNotification.mention_comment(v, @newcomment).deliver 
             end
           end
+# @everyone mention
 
           if @newcomment.comment_content.include? "@everyone"
             if @newcomment.user.role == "admin"
@@ -45,6 +50,7 @@ class CommentsController < ApplicationController
             else
               flash[:notice] = "FYI, @everyone email notifications are generated only by Administator comments."
             end
+# @thread mention
           elsif @newcomment.comment_content.include? "@thread"
                 MentionNotification.mention_thread(@newcomment, @newcomment.user).deliver
           end
@@ -64,10 +70,11 @@ class CommentsController < ApplicationController
       end
   end
 
-  def delete
-  end
+
 
   def destroy
+    authorize! :destroy, Comment
+
     if current_user == Comment.find(params[:id]).user
       comment = Comment.find(params[:id]).destroy
       redirect_to :back
