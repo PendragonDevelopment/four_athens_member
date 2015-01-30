@@ -4,6 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+<<<<<<< HEAD
+=======
+  
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to edit_user_registration_path, :alert => "You do not have the authorization to access that page. Please ensure that your subscription is up-to-date and that you have been given access to that page."
+  end
+
+>>>>>>> 03d769cee58abf5dcc69f3c067f44e1fc904511a
 
   protected
 

@@ -1,7 +1,7 @@
 
 <h1 class="profile-update-title">update profile</h1>
 
-<%= form_for @profile, :url => {:action => 'update'}, :html => { :multipart => true, :role => "form", class: "form-horizontal"  } do |form| %>
+<%= form_for @profile, :url => {:action => 'update'}, :html => { :multipart => true, :role => "form", class: "form-horizontal profile-form"  } do |form| %>
   	<div class="form-group">
     	<%= label_tag "Pic", nil, class: "col-sm-2 control-label" %>
     	<div class="col-sm-10">

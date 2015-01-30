@@ -56,6 +56,14 @@ load_and_authorize_resource
               @newpost.mention!(User.find_by_id(v))
               MentionNotification.mention_post(v, @newpost).deliver 
             end
+            if (@newpost.post_content.include? "@everyone")
+              if @newpost.user.role == "admin"
+                MentionNotification.mention_all_post(@newpost, @newpost.user).deliver
+              else
+                flash[:notice] = "FYI, @everyone email notifications are generated only by Administator posts."
+              end
+
+            end
           end
           redirect_to root_path
 

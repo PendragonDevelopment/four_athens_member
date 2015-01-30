@@ -27,6 +27,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 gem 'autosize-rails', '~> 1.18.8'
 gem 'jquery-ui-rails', '~> 5.0.1'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe_event', '~> 1.4.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
@@ -65,4 +66,9 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development, :test do
+	gem 'rspec-rails', '~> 3.1.0'
+end
+
 ruby "2.1.2"

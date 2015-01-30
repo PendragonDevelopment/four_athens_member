@@ -1,6 +1,15 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<h2>Become a Member</h2>
+<p>Become a Four Athens member! By joining Four Athens, you’ll be connected to a tightly woven group of entrepreneurs, founders, startups, developers, lawyers, and professionals that want to help you succeed!</p>
+<p>Monthly Membership fees: $25</p>
 
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {class: "payment-form", :id => "payment-form"}) do |f| %>
+  <%= devise_error_messages! %>
+<<<<<<< HEAD
+
+=======
+  <p>Account Information</p>
+>>>>>>> 03d769cee58abf5dcc69f3c067f44e1fc904511a
   <div class="form-group"><%= f.label :first_name %><br />
   <%= f.text_field :first_name, autofocus: true, class: "form-control" %></div>
 
@@ -15,9 +24,37 @@
 
   <div class="form-group"><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %></div>
+  
+    <p>Card Information</p>
+        <span class="payment-errors"></span>
 
-  <div class="form-group"><%= f.submit "Sign up", class: "form-control btn btn-primary" %></div>
+
+        <div class="form-group">
+          <%= label_tag :card_number, "Credit Card Number" %>
+          <%= text_field_tag :card_number, nil, name: nil, :data => {:stripe => 'number'}, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+          <%= text_field_tag :card_code, nil, name: nil, :data => {:stripe => 'cvc'}, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :card_month, "Card Expiration" %> <br>
+          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :data => {:stripe => 'exp-month'}, class: "form-control"} %>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",:data => {:stripe => 'exp-year'}, class: "form-control"} %>
+        </div>
+      
+      <div id="stripe_error">
+        <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+      </div>
+
+
+  <div class="form-group"><%= f.submit "Subscribe", class: "form-control btn btn-primary" %></div>
 <% end %>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 03d769cee58abf5dcc69f3c067f44e1fc904511a
 
 <% # =render "devise/shared/links" %>
 
