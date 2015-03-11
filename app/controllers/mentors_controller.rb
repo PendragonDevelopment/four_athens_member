@@ -23,7 +23,11 @@ class MentorsController < ApplicationController
         end
 
 
+<<<<<<< HEAD
   end
+=======
+
+>>>>>>> 063e5da19450a75e5dbb714d4d0eb55fd3d34fb8
 
 
 
@@ -76,6 +80,7 @@ class MentorsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   # def release_slots
   #   if slot = Slot.find(params[:id]).
   #     authorize! :update, slot
@@ -86,6 +91,19 @@ class MentorsController < ApplicationController
   #     redirect_to :back
   #   end
   # end
+=======
+  def release_slots
+    if
+      slot = Slot.find(params[:id]).
+      authorize! :update, slot
+      slot.update_attributes(:user_id => nil)
+      redirect_to :back
+    else
+      flash[:notice] = "The slot could not be released."
+      redirect_to :back
+    end
+  end
+>>>>>>> 063e5da19450a75e5dbb714d4d0eb55fd3d34fb8
 
 
   private

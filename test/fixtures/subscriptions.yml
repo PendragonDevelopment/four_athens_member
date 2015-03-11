@@ -24,9 +24,9 @@
 one:
   last_4_digits: MyString
   stripe_id: MyString
-  user_id: 
+  user_id:
 
 two:
   last_4_digits: MyString
   stripe_id: MyString
-  user_id: 
+  user_id:

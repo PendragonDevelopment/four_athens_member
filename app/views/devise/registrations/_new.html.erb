@@ -2,9 +2,9 @@
 <p>Become a Four Athens member! By joining Four Athens, you’ll be connected to a tightly woven group of entrepreneurs, founders, startups, developers, lawyers, and professionals that want to help you succeed!</p>
 <p>Monthly Membership fees: $25</p>
 
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {class: "payment-form", :id => "payment-form"}) do |f| %>
   <%= devise_error_messages! %>
+
   <p>Account Information</p>
   <div class="form-group"><%= f.label :first_name %><br />
   <%= f.text_field :first_name, autofocus: true, class: "form-control" %></div>
@@ -38,7 +38,6 @@
           <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :data => {:stripe => 'exp-month'}, class: "form-control"} %>
           <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",:data => {:stripe => 'exp-year'}, class: "form-control"} %>
         </div>
-
       <div id="stripe_error">
         <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       </div>
