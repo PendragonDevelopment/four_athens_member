@@ -1,5 +1,5 @@
-Stripe.api_key = ENV["STRIPE_SEC"]
-STRIPE_PUBLIC_KEY = ENV["STRIPE_PUB"]
+Stripe.api_key = "sk_test_s9df0QSOqTCCm7tLRQlKls2g"
+STRIPE_PUBLIC_KEY = "pk_test_l6Vulu7Jo8Luk6RUV5kYFsv1"
 
 STRIPE_PLAN_NAME = "bob01"
 

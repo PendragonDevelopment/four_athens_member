@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
-gem 'mysql2'
+gem 'pg'
 gem 'paperclip', '~> 4.2.0'
 gem 'devise', '~> 3.3.0'
 gem 'mandrill-api', '~> 1.0.52'
@@ -28,6 +28,7 @@ gem 'autosize-rails', '~> 1.18.8'
 gem 'jquery-ui-rails', '~> 5.0.1'
 gem 'stripe', '~> 1.16.0'
 gem 'stripe_event', '~> 1.4.0'
+gem 'annotate', '~> 2.6.7'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

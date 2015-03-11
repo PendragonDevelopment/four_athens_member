@@ -1,3 +1,18 @@
+# ## Schema Information
+#
+# Table name: `skills`
+#
+# ### Columns
+#
+# Name              | Type               | Attributes
+# ----------------- | ------------------ | ---------------------------
+# **`id`**          | `integer`          | `not null, primary key`
+# **`skill_name`**  | `string(255)`      |
+# **`created_at`**  | `datetime`         |
+# **`updated_at`**  | `datetime`         |
+# **`position`**    | `integer`          |
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:

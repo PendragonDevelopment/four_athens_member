@@ -16,12 +16,12 @@ class MentorsController < ApplicationController
       	if @newsheet.save(sheet_params)
           redirect_to :back
 
-  
+
         else
           flash[:alert] = "Sheet was not created successfully."
           redirect_to :back
         end
-  
+
 
   end
 
@@ -43,10 +43,10 @@ class MentorsController < ApplicationController
     authorize! :create, Slot
 
   	@newslot = Slot.create(slot_params)
-        
+
       	if @newslot.save(slot_params)
           redirect_to :back
-  
+
         else
           flash[:alert] = "The slot was not created successfully. Please verify that all fields were filled in."
           redirect_to :back
@@ -76,17 +76,16 @@ class MentorsController < ApplicationController
     end
   end
 
-  def release_slots
-    if
-      slot = Slot.find(params[:id]).
-      authorize! :update, slot
-      slot.update_attributes(:user_id => nil)
-      redirect_to :back
-    else
-      flash[:notice] = "The slot could not be released."
-      redirect_to :back
-    end
-  end
+  # def release_slots
+  #   if slot = Slot.find(params[:id]).
+  #     authorize! :update, slot
+  #     slot.update_attributes(:user_id => nil)
+  #     redirect_to :back
+  #   else
+  #     flash[:notice] = "The slot could not be released."
+  #     redirect_to :back
+  #   end
+  # end
 
 
   private

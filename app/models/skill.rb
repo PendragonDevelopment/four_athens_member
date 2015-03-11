@@ -5,3 +5,18 @@ class Skill < ActiveRecord::Base
   validates_uniqueness_of :skill_name
   
 end
+
+# ## Schema Information
+#
+# Table name: `skills`
+#
+# ### Columns
+#
+# Name              | Type               | Attributes
+# ----------------- | ------------------ | ---------------------------
+# **`id`**          | `integer`          | `not null, primary key`
+# **`skill_name`**  | `string(255)`      |
+# **`created_at`**  | `datetime`         |
+# **`updated_at`**  | `datetime`         |
+# **`position`**    | `integer`          |
+#
