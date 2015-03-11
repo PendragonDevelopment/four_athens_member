@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
-gem 'mysql2'
+gem 'pg'
 gem 'paperclip', '~> 4.2.0'
 gem 'devise', '~> 3.3.0'
 gem 'mandrill-api', '~> 1.0.52'
@@ -26,7 +26,8 @@ gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 gem 'autosize-rails', '~> 1.18.8'
 gem 'jquery-ui-rails', '~> 5.0.1'
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe'
+gem 'annotate'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
@@ -65,4 +66,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-ruby "2.1.2"
+ruby "2.2.0"

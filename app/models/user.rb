@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include ActiveModel::Validations
+  validates_with StripeValidator
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
