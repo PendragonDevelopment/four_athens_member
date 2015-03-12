@@ -7,8 +7,6 @@ set :repo_url, 'https://github.com/PendragonDevelopment/four_athens_member.git'
 set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{tmp/pids}
 
-set :unicorn_config_path, "config/unicorn.rb"
-
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.2.0'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
