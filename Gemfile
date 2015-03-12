@@ -7,7 +7,7 @@ gem 'pg'
 gem 'paperclip', '~> 4.2.0'
 gem 'devise', '~> 3.3.0'
 gem 'mandrill-api', '~> 1.0.52'
-gem 'thin'
+gem 'figaro'
 gem 'will_paginate', '~> 3.0.7'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 gem 'font-awesome-sass'
@@ -47,7 +47,7 @@ gem 'spring',        group: :development
  gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails'
