@@ -54,6 +54,7 @@ gem 'capistrano-rails'
 gem 'capistrano', '~> 3.2.0'
 gem 'capistrano-bundler'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano-unicorn-nginx', '~> 3.2.0'
 
 group :development do
   gem 'better_errors'

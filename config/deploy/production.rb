@@ -1,6 +1,6 @@
 set :stage, :production
 
-set :deploy_to, '~/apps/four-athens-members'
+set :deploy_to, '/home/deploy/apps/four-athens-members'
 
 set :branch, 'master'
 

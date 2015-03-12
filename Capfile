@@ -6,6 +6,6 @@ require 'capistrano/rbenv'
 
 require 'capistrano/rails'
 
-require 'capistrano3/unicorn'
+require 'capistrano/unicorn_nginx'
 
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
