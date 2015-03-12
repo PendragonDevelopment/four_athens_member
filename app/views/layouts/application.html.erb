@@ -33,25 +33,19 @@
           <li class=" <%='active' if params[:controller] == 'profiles'%>">
             <%= link_to "Directory", directory_path, class: "navlink", "data-no-turbolink" => true %>
           </li>
-         
-          <li class="navlink <%='active' if params[:controller] == 'schedules'%>">
-            <%= link_to "Schedules", schedules_index_path %>
-          </li>          
-         
-          <li class="navlink"><%= link_to("FAQs", "#")%></li>
           <% if current_user %>
             <% if can? :manage, Sheet, :user_id => current_user.id%>
               <li class="navlink <%='active' if params[:controller] == 'mentors'%>">
                 <%= link_to "Mentor", mentors_path %>
-              </li>          
+              </li>
             <% end %>
           <% end %>
-                 
+
 
           <% if can? :update, User %>
             <li class="navlink <%='active' if params[:controller] == 'admin'%>">
               <%= link_to "Admin", admin_index_path %>
-            </li>          
+            </li>
           <% end %>
 
 
@@ -60,7 +54,7 @@
 
 
         </ul>
-  
+
 
 
         <ul class="nav navbar-nav navbar-right">
@@ -79,12 +73,12 @@
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navlink", role:"menuitem" %></li>
 
-              </ul>       
-            </li >           
+              </ul>
+            </li >
           <% else %>
               <li><a class="navlink" data-toggle="modal" data-target="#SignInModal">Sign In</a></li>
               <li><a class="navlink" data-toggle="modal" data-target="#SignUpModal">Sign Up</a></li>
-          <% end %>  
+          <% end %>
 
 
         </ul >
@@ -106,7 +100,7 @@
       <div class="modal-body">
         <%= render "devise/sessions/new"  %>
       </div>
-   
+
     </div>
   </div>
 </div>
@@ -122,7 +116,7 @@
       <div class="modal-body">
         <%= render "devise/registrations/new"  %>
       </div>
-   
+
     </div>
   </div>
 </div>
