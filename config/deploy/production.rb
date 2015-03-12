@@ -6,8 +6,6 @@ set :branch, 'master'
 
 set :rails_env, 'production'
 
-set :unicorn_service, "four-athens-members"
-
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
