@@ -22,10 +22,7 @@
         </button>
         <%= link_to image_tag("/assets/fourathens.png", class: "navbar-brand brand-refine"), root_path %>
       </div>
-
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
         <ul class="nav navbar-nav">
           <li class=" <%='active' if params[:controller] == 'posts'%>">
             <%= link_to "Whiteboard", root_path, class: "navlink", "data-no-turbolink" => true %>
@@ -40,47 +37,29 @@
               </li>
             <% end %>
           <% end %>
-
-
           <% if can? :update, User %>
             <li class="navlink <%='active' if params[:controller] == 'admin'%>">
               <%= link_to "Admin", admin_index_path %>
             </li>
           <% end %>
-
-
-
-
-
-
         </ul>
-
-
-
         <ul class="nav navbar-nav navbar-right">
-
           <% if user_signed_in? %>
             <li class="dropdown">
               <a href="#" class="navlink dropdown-toggle" data-toggle="dropdown">Signed in as <%= current_user.first_name%> <span class="caret"></span></a>
-
-
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li role="presentation"><a class="navlink"role="menuitem" tabindex="-1" href="/users/edit">User Settings</a></li>
                 <li role="presentation">
-
                 <%= link_to "User Profile", edit_profile_path(current_user.id),  class: "navlink", :role => "menuitem", :tabindex => "-1" %>
                 </li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navlink", role:"menuitem" %></li>
-
               </ul>
             </li >
           <% else %>
               <li><a class="navlink" data-toggle="modal" data-target="#SignInModal">Sign In</a></li>
               <li><a class="navlink" data-toggle="modal" data-target="#SignUpModal">Sign Up</a></li>
           <% end %>
-
-
         </ul >
       </div>
     </div>
