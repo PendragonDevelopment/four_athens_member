@@ -81,7 +81,23 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # For devise
-#  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.default_url_options = { host: 'http://54.88.180.136' }
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.smtp_settings = {
+    address: "smtp.mandrillapp.com",
+    port: 587,
+    domain: "http://members.fourathens.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["MANDRILL_USERNAME"],
+    password: ENV["MANDRILL_PASSWORD"]
+  }
+
+  config.action_mailer.default_url_options = { host: 'http://members.fourathens.com' }
+  # ActionMailer Config
+  # Setup for production - deliveries, no errors raised
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
 
 end

@@ -16,12 +16,12 @@
 #                          PATCH  /users(.:format)                     registrations#update
 #                          PUT    /users(.:format)                     registrations#update
 #                          DELETE /users(.:format)                     registrations#destroy
-#   accept_user_invitation GET    /users/invitation/accept(.:format)   devise/invitations#edit
-#   remove_user_invitation GET    /users/invitation/remove(.:format)   devise/invitations#destroy
-#          user_invitation POST   /users/invitation(.:format)          devise/invitations#create
-#      new_user_invitation GET    /users/invitation/new(.:format)      devise/invitations#new
-#                          PATCH  /users/invitation(.:format)          devise/invitations#update
-#                          PUT    /users/invitation(.:format)          devise/invitations#update
+#   accept_user_invitation GET    /users/invitation/accept(.:format)   invitations#edit
+#   remove_user_invitation GET    /users/invitation/remove(.:format)   invitations#destroy
+#          user_invitation POST   /users/invitation(.:format)          invitations#create
+#      new_user_invitation GET    /users/invitation/new(.:format)      invitations#new
+#                          PATCH  /users/invitation(.:format)          invitations#update
+#                          PUT    /users/invitation(.:format)          invitations#update
 #                directory GET    /directory(.:format)                 profiles#index
 #              admin_index GET    /admin/index(.:format)               admin#index
 #             admin_update PATCH  /admin/update(.:format)              admin#update
@@ -82,9 +82,10 @@
 #                     root GET    /                                    posts#index
 #
 
+
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations', invitations: 'invitations' }
 
   get 'directory/', to: 'profiles#index'
 
