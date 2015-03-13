@@ -52,6 +52,9 @@
                 <li role="presentation">
                 <%= link_to "User Profile", edit_profile_path(current_user.id),  class: "navlink", :role => "menuitem", :tabindex => "-1" %>
                 </li>
+                <% if current_user.admin? %>
+                  <li role="presentation"><a href="/users/invitation/new" role="menuitem" tabindex="-1" class="navlink">Invite user</a></li>
+                <% end %>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "navlink", role:"menuitem" %></li>
               </ul>

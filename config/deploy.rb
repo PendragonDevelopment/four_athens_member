@@ -16,7 +16,7 @@ set :rbenv_roles, :all # default value
 set :ssh_options, {
   forward_agent: true
 }
-
+# RBENV_ROOT=/home/deploy/.rbenv RBENV_VERSION=2.2.0 /home/deploy/.rbenv/bin/rbenv exec bundle exec rails c
 namespace :deploy do
 
   desc 'Restart application'
