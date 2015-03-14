@@ -4,8 +4,13 @@
 		<h3 class="admin-section">User Roles</h3>
 
 		<% @users.each do |u| %>
-			<div class="admin-div ">	
-				<p class="pull-left admin-name"><%= link_to u.first_name + " " + u.last_name, profile_path(u.id)  %> </p>
+			<div class="admin-div ">
+				<p class="pull-left admin-name">
+					<% if u.first_name && u.last_name %>
+						<%= link_to u.first_name + " " + u.last_name, profile_path(u.id) %> </p>
+					<% else %>
+						<%= link_to u.email, profile_path(u.id) %>
+					<% end %>
 				<%= form_for u, url: {action: "update"}, :html => {:class => "pull-left"} do |f| %>
 					<%= f.collection_select(:role, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
 				    <%= f.hidden_field :id, :value => u.id %>
@@ -26,9 +31,9 @@
 
 		<ul id="skills" data-update-url="<%= sort_skills_url %>">
 			<% @skills.each do |s| %>
-				
+
 				<%= content_tag_for(:li, s, class: "handle")  do %>
-					<%= s.skill_name  %> 
+					<%= s.skill_name  %>
 					<span class="delete-content"> <%= link_to "x", s, method: :delete, data: { confirm: "Deleting a skill will also delete every link from that skill to a user. Even if you re-create this skill, all current links will be lost." }  %> </span>
 				<% end %>
 
