@@ -1,12 +1,12 @@
 <% user = @user %>
 	<div class="profile-entry">
-		
+
     <div class="profile-image-div">
 			<%= image_tag user.profile.avatar.url(:medium), size: "125x125" %>
 		</div>
-	  
+
     <div class="profile-text">
-			<h3 class="title"><%=user.first_name + " " + user.last_name  %></h3>
+			<h3 class="title"><%=user.first_name + " " + user.last_name if user.first_name && user.last_name %></h3>
 			<% if !user.profile.position.blank? && !user.profile.company.blank? %>
 				<p><strong><%= user.profile.position + " @ " + user.profile.company  %></strong></p>
 			<% end %>
@@ -21,7 +21,7 @@
 				<p>"<%= user.profile.micro_bio %>" </p>
 			<% end %>
 		</div>
-		
+
 		<div class="profile-socmed-div">
 			<ul class="profile-ul" >
 				<% if !user.profile.linked_in.blank? %>
@@ -43,13 +43,13 @@
 				<% if !user.profile.behance.blank? %>
 					<li class="profile-socmed"><a href="<%= user.profile.behance %>" target="_blank"> <i class="fa fa-behance-square fontaweplus"></i></a> </li>
 				<% end %>
-				
+
 				<% if !user.profile.codepen.blank? %>
 					<li class="profile-socmed"><a href="<%= user.profile.codepen %>" target="_blank"> <i class="fa fa-codepen fontaweplus"></i></a> </li>
 				<% end %>
 			</ul>
 		</div>
-		
+
 		<div class="profile-label-div">
 			<ul class="profile-ul">
 				<% user.skills.each do |skill| %>
@@ -64,7 +64,7 @@
   <h2>Recent Activity</h2>
 
   <% @posts.each do |post| %>
-        
+
 
   	<div class="post-container clearfix">
 
@@ -72,10 +72,10 @@
     	        <div class = "initial-post">
     	          <h3 class="title writer"><%= post.user.first_name + " " + post.user.last_name %> <span class ="deleted">
 
-    	   
+
     	          </span></h3>
-    	          
-    	        
+
+
 
     	           <%= simple_format(post.post_content, class: 'content') %>
     	          <p class="posted">posted <%= distance_of_time_in_words_to_now(post.created_at) + " ago." %>
@@ -98,7 +98,7 @@
       			        	       <%= simple_format(comment.comment_content, class: 'content') %>
       			        	       <p class="posted-comment">posted <%= distance_of_time_in_words_to_now(comment.created_at) + " ago." %></p>
       			                </div>
-      			              <% end %>          
+      			              <% end %>
       			          <% end %>
       			        </div>
       		        </div>
