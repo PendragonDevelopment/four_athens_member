@@ -4,7 +4,7 @@ lock '3.2.1'
 set :application, 'four-athens-members'
 set :repo_url, 'https://github.com/PendragonDevelopment/four_athens_member.git'
 
-set :linked_files, %w{config/database.yml config/application.yml}
+set :linked_files, %w{config/database.yml config/application.yml config/secrets.yml}
 set :linked_dirs, %w{tmp/pids}
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
